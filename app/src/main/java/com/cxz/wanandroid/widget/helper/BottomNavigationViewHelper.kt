@@ -9,7 +9,7 @@ import android.util.Log
 /**
  * Created by chenxz on 2018/6/10.
  */
-object BottomNavigationViewHelper{
+object BottomNavigationViewHelper {
 
     @SuppressLint("RestrictedApi")
     fun disableShiftMode(view: BottomNavigationView) {

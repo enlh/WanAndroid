@@ -18,7 +18,8 @@ import org.greenrobot.eventbus.EventBus
  * @date 2019/11/15
  * @desc 分享文章
  */
-class ShareArticleFragment : BaseMvpFragment<ShareArticleContract.View, ShareArticlePresenter>(), ShareArticleContract.View {
+class ShareArticleFragment : BaseMvpFragment<ShareArticleContract.View, ShareArticlePresenter>(),
+    ShareArticleContract.View {
 
     companion object {
         fun getInstance(): ShareArticleFragment = ShareArticleFragment()

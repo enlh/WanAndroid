@@ -6,4 +6,5 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by chenxz on 2018/4/21.
  */
-class TrampolineMainScheduler<T> private constructor() : BaseScheduler<T>(Schedulers.trampoline(), AndroidSchedulers.mainThread())
+class TrampolineMainScheduler<T> private constructor() :
+    BaseScheduler<T>(Schedulers.trampoline(), AndroidSchedulers.mainThread())

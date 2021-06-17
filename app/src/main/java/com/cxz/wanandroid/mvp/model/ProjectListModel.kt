@@ -11,7 +11,10 @@ import io.reactivex.Observable
  */
 class ProjectListModel : CommonModel(), ProjectListContract.Model {
 
-    override fun requestProjectList(page: Int, cid: Int): Observable<HttpResult<ArticleResponseBody>> {
+    override fun requestProjectList(
+        page: Int,
+        cid: Int
+    ): Observable<HttpResult<ArticleResponseBody>> {
         return RetrofitHelper.service.getProjectList(page, cid)
     }
 

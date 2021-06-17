@@ -43,7 +43,8 @@ object RomUtil {
     private fun isFlymeV4OrAbove(): Boolean {
         val displayId = Build.DISPLAY
         if (!TextUtils.isEmpty(displayId) && displayId.contains("Flyme")) {
-            val displayIdArray = displayId.split(" ".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
+            val displayIdArray =
+                displayId.split(" ".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
             for (temp in displayIdArray) {
                 //版本号4以上，形如4.x.
                 if (temp.matches("^[4-9]\\.(\\d+\\.)+\\S*".toRegex())) {

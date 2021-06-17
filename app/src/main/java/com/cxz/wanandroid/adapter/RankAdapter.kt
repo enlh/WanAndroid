@@ -18,7 +18,7 @@ class RankAdapter : BaseQuickAdapter<CoinInfoBean, BaseViewHolder>(R.layout.item
         val index = helper.layoutPosition
 
         helper.setText(R.id.tv_username, item.username)
-                .setText(R.id.tv_score, item.coinCount.toString())
-                .setText(R.id.tv_ranking, (index + 1).toString())
+            .setText(R.id.tv_score, item.coinCount.toString())
+            .setText(R.id.tv_ranking, (index + 1).toString())
     }
 }

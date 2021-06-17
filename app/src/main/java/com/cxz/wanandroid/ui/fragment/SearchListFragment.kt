@@ -25,7 +25,9 @@ import kotlinx.android.synthetic.main.fragment_search_list.*
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
-class SearchListFragment : BaseMvpListFragment<SearchListContract.View, SearchListContract.Presenter>(), SearchListContract.View {
+class SearchListFragment :
+    BaseMvpListFragment<SearchListContract.View, SearchListContract.Presenter>(),
+    SearchListContract.View {
 
     companion object {
         fun getInstance(bundle: Bundle): SearchListFragment {
@@ -173,33 +175,33 @@ class SearchListFragment : BaseMvpListFragment<SearchListContract.View, SearchLi
      * ItemChildClickListener
      */
     private val onItemChildClickListener =
-            BaseQuickAdapter.OnItemChildClickListener { _, view, position ->
-                if (datas.size != 0) {
-                    val data = datas[position]
-                    when (view.id) {
-                        R.id.iv_like -> {
-                            if (isLogin) {
-                                if (!NetWorkUtil.isNetworkAvailable(App.context)) {
-                                    showSnackMsg(resources.getString(R.string.no_network))
-                                    return@OnItemChildClickListener
-                                }
-                                val collect = data.collect
-                                data.collect = !collect
-                                mAdapter.setData(position, data)
-                                if (collect) {
-                                    mPresenter?.cancelCollectArticle(data.id)
-                                } else {
-                                    mPresenter?.addCollectArticle(data.id)
-                                }
-                            } else {
-                                Intent(activity, LoginActivity::class.java).run {
-                                    startActivity(this)
-                                }
-                                showToast(resources.getString(R.string.login_tint))
+        BaseQuickAdapter.OnItemChildClickListener { _, view, position ->
+            if (datas.size != 0) {
+                val data = datas[position]
+                when (view.id) {
+                    R.id.iv_like -> {
+                        if (isLogin) {
+                            if (!NetWorkUtil.isNetworkAvailable(App.context)) {
+                                showSnackMsg(resources.getString(R.string.no_network))
+                                return@OnItemChildClickListener
                             }
+                            val collect = data.collect
+                            data.collect = !collect
+                            mAdapter.setData(position, data)
+                            if (collect) {
+                                mPresenter?.cancelCollectArticle(data.id)
+                            } else {
+                                mPresenter?.addCollectArticle(data.id)
+                            }
+                        } else {
+                            Intent(activity, LoginActivity::class.java).run {
+                                startActivity(this)
+                            }
+                            showToast(resources.getString(R.string.login_tint))
                         }
                     }
                 }
             }
+        }
 
 }

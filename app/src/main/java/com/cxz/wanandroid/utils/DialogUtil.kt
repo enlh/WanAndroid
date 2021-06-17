@@ -47,16 +47,20 @@ object DialogUtil {
      * @return
      */
     @JvmOverloads
-    fun getMessageDialog(context: Context, message: String,
-                         onClickListener: DialogInterface.OnClickListener? = null): AlertDialog.Builder {
+    fun getMessageDialog(
+        context: Context, message: String,
+        onClickListener: DialogInterface.OnClickListener? = null
+    ): AlertDialog.Builder {
         val builder = getDialog(context)
         builder.setMessage(message)
         builder.setPositiveButton("确定", onClickListener)
         return builder
     }
 
-    fun getConfirmDialog(context: Context, message: String,
-                         onClickListener: DialogInterface.OnClickListener): AlertDialog.Builder {
+    fun getConfirmDialog(
+        context: Context, message: String,
+        onClickListener: DialogInterface.OnClickListener
+    ): AlertDialog.Builder {
         val builder = getDialog(context)
         builder.setMessage(message)
         builder.setPositiveButton("确定", onClickListener)
@@ -64,8 +68,12 @@ object DialogUtil {
         return builder
     }
 
-    fun getConfirmDialog(context: Context, message: String,
-                         onOKClickListener: DialogInterface.OnClickListener, onCancleClickListener: DialogInterface.OnClickListener): AlertDialog.Builder {
+    fun getConfirmDialog(
+        context: Context,
+        message: String,
+        onOKClickListener: DialogInterface.OnClickListener,
+        onCancleClickListener: DialogInterface.OnClickListener
+    ): AlertDialog.Builder {
         val builder = getDialog(context)
         builder.setMessage(message)
         builder.setPositiveButton("确定", onOKClickListener)
@@ -73,8 +81,10 @@ object DialogUtil {
         return builder
     }
 
-    fun getSelectDialog(context: Context, title: String, arrays: Array<String>,
-                        onClickListener: DialogInterface.OnClickListener): AlertDialog.Builder {
+    fun getSelectDialog(
+        context: Context, title: String, arrays: Array<String>,
+        onClickListener: DialogInterface.OnClickListener
+    ): AlertDialog.Builder {
         val builder = getDialog(context)
         builder.setItems(arrays, onClickListener)
         if (!TextUtils.isEmpty(title)) {
@@ -84,8 +94,10 @@ object DialogUtil {
         return builder
     }
 
-    fun getSelectDialog(context: Context, arrays: Array<String>,
-                        onClickListener: DialogInterface.OnClickListener): AlertDialog.Builder {
+    fun getSelectDialog(
+        context: Context, arrays: Array<String>,
+        onClickListener: DialogInterface.OnClickListener
+    ): AlertDialog.Builder {
         return getSelectDialog(context, "", arrays, onClickListener)
     }
 
@@ -103,9 +115,15 @@ object DialogUtil {
      * 点击取消的回调接口
      * @return
      */
-    fun getSingleChoiceDialog(context: Context, title: String, arrays: Array<String>,
-                              selectIndex: Int, onClickListener: DialogInterface.OnClickListener,
-                              onOKClickListener: DialogInterface.OnClickListener, onCancleClickListener: DialogInterface.OnClickListener? = null): AlertDialog.Builder {
+    fun getSingleChoiceDialog(
+        context: Context,
+        title: String,
+        arrays: Array<String>,
+        selectIndex: Int,
+        onClickListener: DialogInterface.OnClickListener,
+        onOKClickListener: DialogInterface.OnClickListener,
+        onCancleClickListener: DialogInterface.OnClickListener? = null
+    ): AlertDialog.Builder {
         val builder = getDialog(context)
         builder.setSingleChoiceItems(arrays, selectIndex, onClickListener)
         if (!TextUtils.isEmpty(title)) {
@@ -116,8 +134,10 @@ object DialogUtil {
         return builder
     }
 
-    fun getSingleChoiceDialog(context: Context, title: String, arrays: Array<String>,
-                              selectIndex: Int, onClickListener: DialogInterface.OnClickListener): AlertDialog.Builder {
+    fun getSingleChoiceDialog(
+        context: Context, title: String, arrays: Array<String>,
+        selectIndex: Int, onClickListener: DialogInterface.OnClickListener
+    ): AlertDialog.Builder {
         val builder = getDialog(context)
         builder.setSingleChoiceItems(arrays, selectIndex, onClickListener)
         if (!TextUtils.isEmpty(title)) {
@@ -127,11 +147,18 @@ object DialogUtil {
         return builder
     }
 
-    fun getSingleChoiceDialog(context: Context, arrays: Array<String>, selectIndex: Int,
-                              onClickListener: DialogInterface.OnClickListener, onOKClickListener: DialogInterface.OnClickListener,
-                              onCancleClickListener: DialogInterface.OnClickListener): AlertDialog.Builder {
-        return getSingleChoiceDialog(context, "", arrays, selectIndex, onClickListener, onOKClickListener,
-                onCancleClickListener)
+    fun getSingleChoiceDialog(
+        context: Context,
+        arrays: Array<String>,
+        selectIndex: Int,
+        onClickListener: DialogInterface.OnClickListener,
+        onOKClickListener: DialogInterface.OnClickListener,
+        onCancleClickListener: DialogInterface.OnClickListener
+    ): AlertDialog.Builder {
+        return getSingleChoiceDialog(
+            context, "", arrays, selectIndex, onClickListener, onOKClickListener,
+            onCancleClickListener
+        )
     }
 
     /**
@@ -148,9 +175,15 @@ object DialogUtil {
      * 点击取消的回调接口
      * @return
      */
-    fun getMultiChoiceDialog(context: Context, title: String, arrays: Array<String>,
-                             checkedItems: BooleanArray, onMultiChoiceClickListener: DialogInterface.OnMultiChoiceClickListener,
-                             onOKClickListener: DialogInterface.OnClickListener, onCancleListener: DialogInterface.OnClickListener): AlertDialog.Builder {
+    fun getMultiChoiceDialog(
+        context: Context,
+        title: String,
+        arrays: Array<String>,
+        checkedItems: BooleanArray,
+        onMultiChoiceClickListener: DialogInterface.OnMultiChoiceClickListener,
+        onOKClickListener: DialogInterface.OnClickListener,
+        onCancleListener: DialogInterface.OnClickListener
+    ): AlertDialog.Builder {
         val builder = getDialog(context)
         builder.setMultiChoiceItems(arrays, checkedItems, onMultiChoiceClickListener)
         if (!TextUtils.isEmpty(title)) {

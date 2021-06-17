@@ -28,18 +28,45 @@ class ScrollAwareFABBehavior : FloatingActionButton.Behavior {
 
     constructor(context: Context, attrs: AttributeSet) : super()
 
-    override fun onStartNestedScroll(coordinatorLayout: CoordinatorLayout,
-                                     child: FloatingActionButton,
-                                     directTargetChild: View,
-                                     target: View,
-                                     axes: Int,
-                                     type: Int): Boolean {
+    override fun onStartNestedScroll(
+        coordinatorLayout: CoordinatorLayout,
+        child: FloatingActionButton,
+        directTargetChild: View,
+        target: View,
+        axes: Int,
+        type: Int
+    ): Boolean {
         return axes == ViewCompat.SCROLL_AXIS_VERTICAL ||
-                super.onStartNestedScroll(coordinatorLayout, child, directTargetChild, target, axes, type)
+                super.onStartNestedScroll(
+                    coordinatorLayout,
+                    child,
+                    directTargetChild,
+                    target,
+                    axes,
+                    type
+                )
     }
 
-    override fun onNestedScroll(coordinatorLayout: CoordinatorLayout, child: FloatingActionButton, target: View, dxConsumed: Int, dyConsumed: Int, dxUnconsumed: Int, dyUnconsumed: Int, type: Int) {
-        super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed, type)
+    override fun onNestedScroll(
+        coordinatorLayout: CoordinatorLayout,
+        child: FloatingActionButton,
+        target: View,
+        dxConsumed: Int,
+        dyConsumed: Int,
+        dxUnconsumed: Int,
+        dyUnconsumed: Int,
+        type: Int
+    ) {
+        super.onNestedScroll(
+            coordinatorLayout,
+            child,
+            target,
+            dxConsumed,
+            dyConsumed,
+            dxUnconsumed,
+            dyUnconsumed,
+            type
+        )
         // 手指上滑，隐藏FAB
         if ((dyConsumed > 0 || dyUnconsumed > 0) && !isAnimateIng && isShow) {
             AnimatorUtil.translateHide(child, object : StateListener() {

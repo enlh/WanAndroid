@@ -13,8 +13,8 @@ import com.cxz.wanandroid.ui.fragment.KnowledgeFragment
  * @date 2018/10/28
  * @desc
  */
-class WeChatPagerAdapter(private val list: MutableList<WXChapterBean>, fm: FragmentManager?)
-    : FragmentStatePagerAdapter(fm) {
+class WeChatPagerAdapter(private val list: MutableList<WXChapterBean>, fm: FragmentManager?) :
+    FragmentStatePagerAdapter(fm) {
 
     private val fragments = mutableListOf<Fragment>()
 

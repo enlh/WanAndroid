@@ -12,7 +12,11 @@ import io.reactivex.Observable
  */
 class RegisterModel : BaseModel(), RegisterContract.Model {
 
-    override fun registerWanAndroid(username: String, password: String, repassword: String): Observable<HttpResult<LoginData>> {
+    override fun registerWanAndroid(
+        username: String,
+        password: String,
+        repassword: String
+    ): Observable<HttpResult<LoginData>> {
         return RetrofitHelper.service.registerWanAndroid(username, password, repassword)
     }
 

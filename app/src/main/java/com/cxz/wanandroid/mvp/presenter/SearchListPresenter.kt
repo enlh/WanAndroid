@@ -4,7 +4,8 @@ import com.cxz.wanandroid.ext.ss
 import com.cxz.wanandroid.mvp.contract.SearchListContract
 import com.cxz.wanandroid.mvp.model.SearchListModel
 
-class SearchListPresenter : CommonPresenter<SearchListContract.Model, SearchListContract.View>(), SearchListContract.Presenter {
+class SearchListPresenter : CommonPresenter<SearchListContract.Model, SearchListContract.View>(),
+    SearchListContract.Presenter {
 
     override fun createModel(): SearchListContract.Model? = SearchListModel()
 

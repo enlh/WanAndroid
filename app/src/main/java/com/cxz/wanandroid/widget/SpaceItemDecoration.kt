@@ -45,7 +45,12 @@ class SpaceItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
         }
     }
 
-    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+    override fun getItemOffsets(
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State
+    ) {
         super.getItemOffsets(outRect, view, parent, state)
 
         if (getOrientation(parent.layoutManager!!) == RecyclerView.VERTICAL) {
@@ -65,8 +70,10 @@ class SpaceItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
 
             val params = child.layoutParams as RecyclerView.LayoutParams
 
-            val top = child.bottom + params.bottomMargin + Math.round(ViewCompat.getTranslationY(child))
-            val bottom = top + if (mDivider!!.intrinsicHeight <= 0) 1 else mDivider!!.intrinsicHeight
+            val top =
+                child.bottom + params.bottomMargin + Math.round(ViewCompat.getTranslationY(child))
+            val bottom =
+                top + if (mDivider!!.intrinsicHeight <= 0) 1 else mDivider!!.intrinsicHeight
 
             mDivider?.let {
                 it.setBounds(left, top, right, bottom)

@@ -21,7 +21,8 @@ import java.util.*
 /**
  * Created by chenxz on 2018/8/11.
  */
-class AddTodoFragment : BaseMvpFragment<AddTodoContract.View, AddTodoContract.Presenter>(), AddTodoContract.View {
+class AddTodoFragment : BaseMvpFragment<AddTodoContract.View, AddTodoContract.Presenter>(),
+    AddTodoContract.View {
 
     companion object {
         fun getInstance(bundle: Bundle): AddTodoFragment {
@@ -43,10 +44,12 @@ class AddTodoFragment : BaseMvpFragment<AddTodoContract.View, AddTodoContract.Pr
      */
     private var mType: Int = 0
     private var mTodoBean: TodoBean? = null
+
     /**
      * 新增，编辑，查看 三种状态
      */
     private var mTypeKey = ""
+
     /**
      * id
      */
@@ -136,14 +139,15 @@ class AddTodoFragment : BaseMvpFragment<AddTodoContract.View, AddTodoContract.Pr
                     now = it.stringToCalendar()
                 }
             }
-            val dpd = android.app.DatePickerDialog(activity,
-                    DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-                        mCurrentDate = "$year-${month + 1}-$dayOfMonth"
-                        tv_date.text = mCurrentDate
-                    },
-                    now.get(Calendar.YEAR),
-                    now.get(Calendar.MONTH),
-                    now.get(Calendar.DAY_OF_MONTH)
+            val dpd = android.app.DatePickerDialog(
+                activity,
+                DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+                    mCurrentDate = "$year-${month + 1}-$dayOfMonth"
+                    tv_date.text = mCurrentDate
+                },
+                now.get(Calendar.YEAR),
+                now.get(Calendar.MONTH),
+                now.get(Calendar.DAY_OF_MONTH)
             )
             dpd.show()
         }

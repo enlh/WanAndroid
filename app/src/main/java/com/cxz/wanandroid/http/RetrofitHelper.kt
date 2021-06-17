@@ -29,12 +29,12 @@ object RetrofitHelper {
     private fun getRetrofit(): Retrofit? {
         if (retrofit == null) {
             retrofit = Retrofit.Builder()
-                    .baseUrl(Constant.BASE_URL)  // baseUrl
-                    .client(getOkHttpClient())
-                    //.addConverterFactory(GsonConverterFactory.create())
-                    .addConverterFactory(MoshiConverterFactory.create())
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .build()
+                .baseUrl(Constant.BASE_URL)  // baseUrl
+                .client(getOkHttpClient())
+                //.addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(MoshiConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build()
         }
         return retrofit
     }

@@ -15,7 +15,11 @@ import com.cxz.wanandroid.widget.TiltTextView
  */
 class TodoAdapter : BaseSectionQuickAdapter<TodoDataBean, BaseViewHolder> {
 
-    constructor(layoutResId: Int, sectionHeadResId: Int, data: MutableList<TodoDataBean>) : super(layoutResId, sectionHeadResId, data)
+    constructor(layoutResId: Int, sectionHeadResId: Int, data: MutableList<TodoDataBean>) : super(
+        layoutResId,
+        sectionHeadResId,
+        data
+    )
 
     override fun convertHead(helper: BaseViewHolder?, item: TodoDataBean?) {
         helper ?: return
@@ -28,9 +32,9 @@ class TodoAdapter : BaseSectionQuickAdapter<TodoDataBean, BaseViewHolder> {
         item ?: return
         val itemData = item.t as TodoBean
         helper.setText(R.id.tv_todo_title, itemData.title)
-                .addOnClickListener(R.id.btn_delete)
-                .addOnClickListener(R.id.btn_done)
-                .addOnClickListener(R.id.item_todo_content)
+            .addOnClickListener(R.id.btn_delete)
+            .addOnClickListener(R.id.btn_done)
+            .addOnClickListener(R.id.item_todo_content)
         val tv_todo_desc = helper.getView<TextView>(R.id.tv_todo_desc)
         tv_todo_desc.text = ""
         tv_todo_desc.visibility = View.INVISIBLE

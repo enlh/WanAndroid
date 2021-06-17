@@ -29,7 +29,8 @@ import kotlinx.android.synthetic.main.activity_content.*
 import kotlinx.android.synthetic.main.toolbar.*
 import org.greenrobot.eventbus.EventBus
 
-class ContentActivity : BaseMvpSwipeBackActivity<ContentContract.View, ContentContract.Presenter>(), ContentContract.View {
+class ContentActivity : BaseMvpSwipeBackActivity<ContentContract.View, ContentContract.Presenter>(),
+    ContentContract.View {
 
     private var mAgentWeb: AgentWeb? = null
 
@@ -97,13 +98,14 @@ class ContentActivity : BaseMvpSwipeBackActivity<ContentContract.View, ContentCo
         layoutParams.behavior = AppBarLayout.ScrollingViewBehavior()
 
         mAgentWeb = shareUrl.getAgentWeb(
-                this,
-                cl_main,
-                layoutParams,
-                webView,
-                WebClientFactory.create(shareUrl),
-                mWebChromeClient,
-                mThemeColor)
+            this,
+            cl_main,
+            layoutParams,
+            webView,
+            WebClientFactory.create(shareUrl),
+            mWebChromeClient,
+            mThemeColor
+        )
 
         //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
         //    WebView.setWebContentsDebuggingEnabled(true)
@@ -156,10 +158,12 @@ class ContentActivity : BaseMvpSwipeBackActivity<ContentContract.View, ContentCo
             R.id.action_share -> {
                 Intent().run {
                     action = Intent.ACTION_SEND
-                    putExtra(Intent.EXTRA_TEXT, getString(
+                    putExtra(
+                        Intent.EXTRA_TEXT, getString(
                             R.string.share_article_url,
                             getString(R.string.app_name), shareTitle, shareUrl
-                    ))
+                        )
+                    )
                     type = Constant.CONTENT_SHARE_TYPE
                     startActivity(Intent.createChooser(this, getString(R.string.action_share)))
                 }

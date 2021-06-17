@@ -7,7 +7,8 @@ import com.cxz.wanandroid.mvp.model.KnowledgeModel
 /**
  * Created by chenxz on 2018/5/12.
  */
-class KnowledgePresenter : CommonPresenter<KnowledgeContract.Model, KnowledgeContract.View>(), KnowledgeContract.Presenter {
+class KnowledgePresenter : CommonPresenter<KnowledgeContract.Model, KnowledgeContract.View>(),
+    KnowledgeContract.Presenter {
 
     override fun createModel(): KnowledgeContract.Model? = KnowledgeModel()
 

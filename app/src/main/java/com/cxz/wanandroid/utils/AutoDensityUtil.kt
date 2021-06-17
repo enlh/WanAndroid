@@ -31,7 +31,8 @@ object AutoDensityUtil {
      * 初始化
      */
     fun init() {
-        targetUiDpi = Math.sqrt((widthUiPx * widthUiPx + heightUiPx * heightUiPx).toDouble()) / sizeUi
+        targetUiDpi =
+            Math.sqrt((widthUiPx * widthUiPx + heightUiPx * heightUiPx).toDouble()) / sizeUi
         densityUi = (targetUiDpi / 160).toFloat()
         widthUiDp = widthUiPx / densityUi
     }

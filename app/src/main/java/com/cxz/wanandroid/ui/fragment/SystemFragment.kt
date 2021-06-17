@@ -20,7 +20,8 @@ import org.greenrobot.eventbus.ThreadMode
  * @date 2019/11/17
  * @desc 体系
  */
-class SystemFragment : BaseMvpFragment<SystemContract.View, SystemPresenter>(), SystemContract.View {
+class SystemFragment : BaseMvpFragment<SystemContract.View, SystemPresenter>(),
+    SystemContract.View {
 
     companion object {
         fun getInstance(): SystemFragment = SystemFragment()
@@ -97,7 +98,11 @@ class SystemFragment : BaseMvpFragment<SystemContract.View, SystemPresenter>(), 
         }
     }
 
-    class SystemPagerAdapter(fm: FragmentManager, private val titleList: MutableList<String>, private val fragmentList: MutableList<Fragment>) : FragmentPagerAdapter(fm) {
+    class SystemPagerAdapter(
+        fm: FragmentManager,
+        private val titleList: MutableList<String>,
+        private val fragmentList: MutableList<Fragment>
+    ) : FragmentPagerAdapter(fm) {
 
         override fun getItem(i: Int): Fragment = fragmentList[i]
 

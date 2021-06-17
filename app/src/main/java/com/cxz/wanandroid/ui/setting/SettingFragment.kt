@@ -3,7 +3,6 @@ package com.cxz.wanandroid.ui.setting
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
 import android.preference.Preference
 import android.preference.PreferenceFragment
@@ -52,10 +51,10 @@ class SettingFragment : PreferenceFragment(), SharedPreferences.OnSharedPreferen
             // 通知首页刷新数据
             // 延迟发送通知：为了保证刷新数据时 SettingUtil.getIsShowTopArticle() 得到最新的值
             Observable.timer(100, TimeUnit.MILLISECONDS)
-                    .compose(SchedulerUtils.ioToMain())
-                    .subscribe({
-                        EventBus.getDefault().post(RefreshHomeEvent(true))
-                    }, {})
+                .compose(SchedulerUtils.ioToMain())
+                .subscribe({
+                    EventBus.getDefault().post(RefreshHomeEvent(true))
+                }, {})
             true
         }
 
@@ -66,34 +65,36 @@ class SettingFragment : PreferenceFragment(), SharedPreferences.OnSharedPreferen
 
         findPreference("color").setOnPreferenceClickListener {
             ColorChooserDialog.Builder(context!!, R.string.choose_theme_color)
-                    .backButton(R.string.back)
-                    .cancelButton(R.string.cancel)
-                    .doneButton(R.string.done)
-                    .customButton(R.string.custom)
-                    .presetsButton(R.string.back)
-                    .allowUserColorInputAlpha(false)
-                    .show()
+                .backButton(R.string.back)
+                .cancelButton(R.string.cancel)
+                .doneButton(R.string.done)
+                .customButton(R.string.custom)
+                .presetsButton(R.string.back)
+                .allowUserColorInputAlpha(false)
+                .show()
             false
         }
 
-        findPreference("clearCache").onPreferenceClickListener = Preference.OnPreferenceClickListener {
-            CacheDataUtil.clearAllCache(context!!)
-            context?.showSnackMsg(getString(R.string.clear_cache_successfully))
-            setDefaultText()
-            false
-        }
-
-        findPreference("scanQrCode").onPreferenceClickListener = Preference.OnPreferenceClickListener {
-            Intent(activity, CommonActivity::class.java).run {
-                putExtra(Constant.TYPE_KEY, Constant.Type.SCAN_QR_CODE_TYPE_KEY)
-                startActivity(this)
+        findPreference("clearCache").onPreferenceClickListener =
+            Preference.OnPreferenceClickListener {
+                CacheDataUtil.clearAllCache(context!!)
+                context?.showSnackMsg(getString(R.string.clear_cache_successfully))
+                setDefaultText()
+                false
             }
-            false
-        }
+
+        findPreference("scanQrCode").onPreferenceClickListener =
+            Preference.OnPreferenceClickListener {
+                Intent(activity, CommonActivity::class.java).run {
+                    putExtra(Constant.TYPE_KEY, Constant.Type.SCAN_QR_CODE_TYPE_KEY)
+                    startActivity(this)
+                }
+                false
+            }
 
         try {
             val version = context?.resources?.getString(R.string.current_version).toString()
-                    .plus(context?.packageManager?.getPackageInfo(context?.packageName, 0)?.versionName)
+                .plus(context?.packageManager?.getPackageInfo(context?.packageName, 0)?.versionName)
             findPreference("version").summary = version
         } catch (e: PackageManager.NameNotFoundException) {
             e.printStackTrace()
@@ -124,20 +125,22 @@ class SettingFragment : PreferenceFragment(), SharedPreferences.OnSharedPreferen
             false
         }
 
-        findPreference("sourceCode").onPreferenceClickListener = Preference.OnPreferenceClickListener {
-            // context?.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.source_code_url))))
-            ContentActivity.start(activity, getString(R.string.source_code_url))
-            false
-        }
+        findPreference("sourceCode").onPreferenceClickListener =
+            Preference.OnPreferenceClickListener {
+                // context?.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.source_code_url))))
+                ContentActivity.start(activity, getString(R.string.source_code_url))
+                false
+            }
 
-        findPreference("copyRight").onPreferenceClickListener = Preference.OnPreferenceClickListener {
-            AlertDialog.Builder(context!!)
+        findPreference("copyRight").onPreferenceClickListener =
+            Preference.OnPreferenceClickListener {
+                AlertDialog.Builder(context!!)
                     .setTitle(R.string.copyright)
                     .setMessage(R.string.copyright_content)
                     .setCancelable(true)
                     .show()
-            false
-        }
+                false
+            }
 
     }
 

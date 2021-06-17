@@ -29,7 +29,11 @@ class AboutFragment : BaseFragment() {
             movementMethod = LinkMovementMethod.getInstance()
         }
 
-        val versionStr = getString(R.string.app_name) + " V" + activity?.packageManager?.getPackageInfo(activity?.packageName, 0)?.versionName
+        val versionStr =
+            getString(R.string.app_name) + " V" + activity?.packageManager?.getPackageInfo(
+                activity?.packageName,
+                0
+            )?.versionName
         about_version.text = versionStr
 
         setLogoBg()

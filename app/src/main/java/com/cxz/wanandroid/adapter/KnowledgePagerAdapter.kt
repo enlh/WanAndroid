@@ -11,7 +11,8 @@ import com.cxz.wanandroid.ui.fragment.KnowledgeFragment
 /**
  * Created by chenxz on 2018/5/10.
  */
-class KnowledgePagerAdapter(val list: List<Knowledge>, fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
+class KnowledgePagerAdapter(val list: List<Knowledge>, fm: FragmentManager) :
+    FragmentStatePagerAdapter(fm) {
 
     private val fragments = mutableListOf<Fragment>()
 

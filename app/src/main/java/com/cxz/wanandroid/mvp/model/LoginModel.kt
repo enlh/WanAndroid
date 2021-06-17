@@ -12,7 +12,10 @@ import io.reactivex.Observable
  */
 class LoginModel : BaseModel(), LoginContract.Model {
 
-    override fun loginWanAndroid(username: String, password: String): Observable<HttpResult<LoginData>> {
+    override fun loginWanAndroid(
+        username: String,
+        password: String
+    ): Observable<HttpResult<LoginData>> {
         return RetrofitHelper.service.loginWanAndroid(username, password)
     }
 

@@ -16,7 +16,8 @@ import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.toolbar.*
 import org.greenrobot.eventbus.EventBus
 
-class LoginActivity : BaseMvpActivity<LoginContract.View, LoginContract.Presenter>(), LoginContract.View {
+class LoginActivity : BaseMvpActivity<LoginContract.View, LoginContract.Presenter>(),
+    LoginContract.View {
 
     /**
      * local username

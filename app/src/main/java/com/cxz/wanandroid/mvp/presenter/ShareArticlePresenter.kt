@@ -10,7 +10,8 @@ import com.cxz.wanandroid.mvp.model.ShareArticleModel
  * @date 2019/11/16
  * @desc
  */
-class ShareArticlePresenter : BasePresenter<ShareArticleModel, ShareArticleContract.View>(), ShareArticleContract.Presenter {
+class ShareArticlePresenter : BasePresenter<ShareArticleModel, ShareArticleContract.View>(),
+    ShareArticleContract.Presenter {
 
     override fun createModel(): ShareArticleModel? = ShareArticleModel()
 

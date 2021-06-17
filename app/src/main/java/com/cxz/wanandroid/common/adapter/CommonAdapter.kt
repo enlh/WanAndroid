@@ -9,8 +9,10 @@ import android.view.ViewGroup
  * desc: 通用的 Adapter
  */
 @Deprecated("")
-abstract class CommonAdapter<T>(var mContext: Context, var mData: ArrayList<T>, //条目布局
-                                private var mLayoutId: Int) : RecyclerView.Adapter<ViewHolder>() {
+abstract class CommonAdapter<T>(
+    var mContext: Context, var mData: ArrayList<T>, //条目布局
+    private var mLayoutId: Int
+) : RecyclerView.Adapter<ViewHolder>() {
     protected var mInflater: LayoutInflater? = null
     private var mTypeSupport: MultipleType<T>? = null
 
@@ -25,7 +27,11 @@ abstract class CommonAdapter<T>(var mContext: Context, var mData: ArrayList<T>, 
     }
 
     //需要多布局
-    constructor(context: Context, data: ArrayList<T>, typeSupport: MultipleType<T>) : this(context, data, -1) {
+    constructor(context: Context, data: ArrayList<T>, typeSupport: MultipleType<T>) : this(
+        context,
+        data,
+        -1
+    ) {
         this.mTypeSupport = typeSupport
     }
 
@@ -41,7 +47,9 @@ abstract class CommonAdapter<T>(var mContext: Context, var mData: ArrayList<T>, 
 
     override fun getItemViewType(position: Int): Int {
         //多布局问题
-        return mTypeSupport?.getLayoutId(mData[position], position) ?: super.getItemViewType(position)
+        return mTypeSupport?.getLayoutId(mData[position], position) ?: super.getItemViewType(
+            position
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -57,12 +65,22 @@ abstract class CommonAdapter<T>(var mContext: Context, var mData: ArrayList<T>, 
 //        }
         //条目点击事件
         mItemClickListener?.let {
-            holder.itemView.setOnClickListener { mItemClickListener!!.onItemClick(mData[position], position) }
+            holder.itemView.setOnClickListener {
+                mItemClickListener!!.onItemClick(
+                    mData[position],
+                    position
+                )
+            }
         }
 
         //长按点击事件
         mItemLongClickListener?.let {
-            holder.itemView.setOnLongClickListener { mItemLongClickListener!!.onItemLongClick(mData[position], position) }
+            holder.itemView.setOnLongClickListener {
+                mItemLongClickListener!!.onItemLongClick(
+                    mData[position],
+                    position
+                )
+            }
         }
     }
 

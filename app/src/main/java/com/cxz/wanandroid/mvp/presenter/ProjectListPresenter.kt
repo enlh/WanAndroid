@@ -7,7 +7,8 @@ import com.cxz.wanandroid.mvp.model.ProjectListModel
 /**
  * Created by chenxz on 2018/5/20.
  */
-class ProjectListPresenter : CommonPresenter<ProjectListContract.Model, ProjectListContract.View>(), ProjectListContract.Presenter {
+class ProjectListPresenter : CommonPresenter<ProjectListContract.Model, ProjectListContract.View>(),
+    ProjectListContract.Presenter {
 
     override fun createModel(): ProjectListContract.Model? = ProjectListModel()
 

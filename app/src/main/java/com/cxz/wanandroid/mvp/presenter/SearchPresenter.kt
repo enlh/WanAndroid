@@ -9,7 +9,8 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import org.litepal.LitePal
 
-class SearchPresenter : BasePresenter<SearchContract.Model, SearchContract.View>(), SearchContract.Presenter {
+class SearchPresenter : BasePresenter<SearchContract.Model, SearchContract.View>(),
+    SearchContract.Presenter {
 
 
     override fun createModel(): SearchContract.Model? = SearchModel()

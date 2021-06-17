@@ -21,7 +21,8 @@ import org.jetbrains.anko.uiThread
  * @date 2018/10/28
  * @desc 公众号
  */
-class WeChatFragment : BaseMvpFragment<WeChatContract.View, WeChatContract.Presenter>(), WeChatContract.View {
+class WeChatFragment : BaseMvpFragment<WeChatContract.View, WeChatContract.Presenter>(),
+    WeChatContract.View {
 
     companion object {
         fun getInstance(): WeChatFragment = WeChatFragment()
@@ -131,7 +132,8 @@ class WeChatFragment : BaseMvpFragment<WeChatContract.View, WeChatContract.Prese
         if (viewPagerAdapter.count == 0) {
             return
         }
-        val fragment: KnowledgeFragment = viewPagerAdapter.getItem(viewPager.currentItem) as KnowledgeFragment
+        val fragment: KnowledgeFragment =
+            viewPagerAdapter.getItem(viewPager.currentItem) as KnowledgeFragment
         fragment.scrollToTop()
     }
 

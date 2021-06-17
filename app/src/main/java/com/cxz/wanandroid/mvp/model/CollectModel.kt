@@ -3,8 +3,8 @@ package com.cxz.wanandroid.mvp.model
 import com.cxz.wanandroid.base.BaseModel
 import com.cxz.wanandroid.http.RetrofitHelper
 import com.cxz.wanandroid.mvp.contract.CollectContract
-import com.cxz.wanandroid.mvp.model.bean.CollectionArticle
 import com.cxz.wanandroid.mvp.model.bean.BaseListResponseBody
+import com.cxz.wanandroid.mvp.model.bean.CollectionArticle
 import com.cxz.wanandroid.mvp.model.bean.HttpResult
 import io.reactivex.Observable
 

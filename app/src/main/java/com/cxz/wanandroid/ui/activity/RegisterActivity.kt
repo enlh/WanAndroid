@@ -16,7 +16,8 @@ import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.toolbar.*
 import org.greenrobot.eventbus.EventBus
 
-class RegisterActivity : BaseMvpActivity<RegisterContract.View, RegisterContract.Presenter>(), RegisterContract.View {
+class RegisterActivity : BaseMvpActivity<RegisterContract.View, RegisterContract.Presenter>(),
+    RegisterContract.View {
 
     /**
      * local username
@@ -103,9 +104,11 @@ class RegisterActivity : BaseMvpActivity<RegisterContract.View, RegisterContract
      */
     private fun register() {
         if (validate()) {
-            mPresenter?.registerWanAndroid(et_username.text.toString(),
-                    et_password.text.toString(),
-                    et_password2.text.toString())
+            mPresenter?.registerWanAndroid(
+                et_username.text.toString(),
+                et_password.text.toString(),
+                et_password2.text.toString()
+            )
         }
     }
 

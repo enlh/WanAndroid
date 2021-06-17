@@ -8,7 +8,9 @@ import com.cxz.wanandroid.mvp.model.KnowledgeTreeModel
 /**
  * Created by chenxz on 2018/5/8.
  */
-class KnowledgeTreePresenter : BasePresenter<KnowledgeTreeContract.Model, KnowledgeTreeContract.View>(), KnowledgeTreeContract.Presenter {
+class KnowledgeTreePresenter :
+    BasePresenter<KnowledgeTreeContract.Model, KnowledgeTreeContract.View>(),
+    KnowledgeTreeContract.Presenter {
 
     override fun createModel(): KnowledgeTreeContract.Model? = KnowledgeTreeModel()
 

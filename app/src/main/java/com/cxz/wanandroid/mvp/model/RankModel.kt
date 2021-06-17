@@ -4,8 +4,8 @@ import com.cxz.wanandroid.base.BaseModel
 import com.cxz.wanandroid.http.RetrofitHelper
 import com.cxz.wanandroid.mvp.contract.RankContract
 import com.cxz.wanandroid.mvp.model.bean.BaseListResponseBody
-import com.cxz.wanandroid.mvp.model.bean.HttpResult
 import com.cxz.wanandroid.mvp.model.bean.CoinInfoBean
+import com.cxz.wanandroid.mvp.model.bean.HttpResult
 import io.reactivex.Observable
 
 /**

@@ -13,9 +13,10 @@ import com.cxz.wanandroid.R
 /**
  * Created by chenxz on 2018/7/22.
  */
-class ClearEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null,
-                                              defStyle: Int = android.R.attr.editTextStyle)
-    : EditText(context, attrs, defStyle), View.OnFocusChangeListener, TextWatcher {
+class ClearEditText @JvmOverloads constructor(
+    context: Context, attrs: AttributeSet? = null,
+    defStyle: Int = android.R.attr.editTextStyle
+) : EditText(context, attrs, defStyle), View.OnFocusChangeListener, TextWatcher {
     //EditText右侧的删除按钮
     private var mClearDrawable: Drawable? = null
     private var hasFocus: Boolean = false
@@ -30,11 +31,14 @@ class ClearEditText @JvmOverloads constructor(context: Context, attrs: Attribute
         mClearDrawable = compoundDrawables[2]
         if (mClearDrawable == null) {
             mClearDrawable = resources.getDrawable(
-                    R.mipmap.ic_action_clear)
+                R.mipmap.ic_action_clear
+            )
         }
 
-        mClearDrawable!!.setBounds(0, 0, mClearDrawable!!.intrinsicWidth,
-                mClearDrawable!!.intrinsicHeight)
+        mClearDrawable!!.setBounds(
+            0, 0, mClearDrawable!!.intrinsicWidth,
+            mClearDrawable!!.intrinsicHeight
+        )
         // 默认设置隐藏图标
         setClearIconVisible(false)
         // 设置焦点改变的监听
@@ -91,8 +95,10 @@ class ClearEditText @JvmOverloads constructor(context: Context, attrs: Attribute
 
     private fun setClearIconVisible(visible: Boolean) {
         val right = if (visible) mClearDrawable else null
-        setCompoundDrawables(compoundDrawables[0],
-                compoundDrawables[1], right, compoundDrawables[3])
+        setCompoundDrawables(
+            compoundDrawables[0],
+            compoundDrawables[1], right, compoundDrawables[3]
+        )
     }
 
     override fun onTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
@@ -101,8 +107,10 @@ class ClearEditText @JvmOverloads constructor(context: Context, attrs: Attribute
         }
     }
 
-    override fun beforeTextChanged(s: CharSequence, start: Int, count: Int,
-                                   after: Int) {
+    override fun beforeTextChanged(
+        s: CharSequence, start: Int, count: Int,
+        after: Int
+    ) {
 
     }
 

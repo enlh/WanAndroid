@@ -19,7 +19,8 @@ import android.view.View
 class RecyclerViewItemDecoration : RecyclerView.ItemDecoration {
 
     private var context: Context
-    private var orientation: Int = LinearLayoutManager.VERTICAL // 列表的方向：LinearLayoutManager.VERTICAL或LinearLayoutManager.HORIZONTAL
+    private var orientation: Int =
+        LinearLayoutManager.VERTICAL // 列表的方向：LinearLayoutManager.VERTICAL或LinearLayoutManager.HORIZONTAL
     private var dividerHeight: Int = 2//分割线高度
     private var dividerColor: Int = 0
     private var mDivider: Drawable? = null
@@ -41,7 +42,10 @@ class RecyclerViewItemDecoration : RecyclerView.ItemDecoration {
         a.recycle()
     }
 
-    constructor(context: Context, orientation: Int, dividerHeight: Int, dividerColor: Int) : this(context, orientation) {
+    constructor(context: Context, orientation: Int, dividerHeight: Int, dividerColor: Int) : this(
+        context,
+        orientation
+    ) {
         this.dividerHeight = dividerHeight
         this.dividerColor = dividerColor
 
@@ -57,7 +61,12 @@ class RecyclerViewItemDecoration : RecyclerView.ItemDecoration {
         dividerHeight = mDivider!!.intrinsicHeight
     }
 
-    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+    override fun getItemOffsets(
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State
+    ) {
         super.getItemOffsets(outRect, view, parent, state)
         outRect.set(0, 0, 0, dividerHeight)
     }
@@ -88,7 +97,13 @@ class RecyclerViewItemDecoration : RecyclerView.ItemDecoration {
                 it.draw(canvas)
             }
             mPaint?.let {
-                canvas.drawRect(left.toFloat(), top.toFloat(), right.toFloat(), bottom.toFloat(), mPaint)
+                canvas.drawRect(
+                    left.toFloat(),
+                    top.toFloat(),
+                    right.toFloat(),
+                    bottom.toFloat(),
+                    mPaint
+                )
             }
         }
     }
@@ -110,7 +125,13 @@ class RecyclerViewItemDecoration : RecyclerView.ItemDecoration {
                 it.draw(canvas)
             }
             mPaint?.let {
-                canvas.drawRect(left.toFloat(), top.toFloat(), right.toFloat(), bottom.toFloat(), mPaint)
+                canvas.drawRect(
+                    left.toFloat(),
+                    top.toFloat(),
+                    right.toFloat(),
+                    bottom.toFloat(),
+                    mPaint
+                )
             }
         }
     }

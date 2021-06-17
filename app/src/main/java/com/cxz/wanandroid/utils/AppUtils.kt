@@ -31,7 +31,7 @@ class AppUtils private constructor() {
             try {
                 val packageName = context.packageName
                 verCode = context.packageManager
-                        .getPackageInfo(packageName, 0).versionCode
+                    .getPackageInfo(packageName, 0).versionCode
             } catch (e: PackageManager.NameNotFoundException) {
                 e.printStackTrace()
             }
@@ -60,7 +60,7 @@ class AppUtils private constructor() {
             try {
                 val packageName = context.packageName
                 verName = context.packageManager
-                        .getPackageInfo(packageName, 0).versionName
+                    .getPackageInfo(packageName, 0).versionName
             } catch (e: PackageManager.NameNotFoundException) {
                 e.printStackTrace()
             }
@@ -80,8 +80,10 @@ class AppUtils private constructor() {
         fun getSign(context: Context, pkgName: String): String? {
             return try {
                 @SuppressLint("PackageManagerGetSignatures") val pis = context.packageManager
-                        .getPackageInfo(pkgName,
-                                PackageManager.GET_SIGNATURES)
+                    .getPackageInfo(
+                        pkgName,
+                        PackageManager.GET_SIGNATURES
+                    )
                 hexDigest(pis.signatures[0].toByteArray())
             } catch (e: PackageManager.NameNotFoundException) {
                 e.printStackTrace()
@@ -97,7 +99,24 @@ class AppUtils private constructor() {
          * @return 32位签名字符串
          */
         private fun hexDigest(paramArrayOfByte: ByteArray): String {
-            val hexDigits = charArrayOf(48.toChar(), 49.toChar(), 50.toChar(), 51.toChar(), 52.toChar(), 53.toChar(), 54.toChar(), 55.toChar(), 56.toChar(), 57.toChar(), 97.toChar(), 98.toChar(), 99.toChar(), 100.toChar(), 101.toChar(), 102.toChar())
+            val hexDigits = charArrayOf(
+                48.toChar(),
+                49.toChar(),
+                50.toChar(),
+                51.toChar(),
+                52.toChar(),
+                53.toChar(),
+                54.toChar(),
+                55.toChar(),
+                56.toChar(),
+                57.toChar(),
+                97.toChar(),
+                98.toChar(),
+                99.toChar(),
+                100.toChar(),
+                101.toChar(),
+                102.toChar()
+            )
             try {
                 val localMessageDigest = MessageDigest.getInstance("MD5")
                 localMessageDigest.update(paramArrayOfByte)
@@ -131,7 +150,8 @@ class AppUtils private constructor() {
          */
         fun getDeviceUsableMemory(context: Context): Int {
             val am = context.getSystemService(
-                    Context.ACTIVITY_SERVICE) as ActivityManager
+                Context.ACTIVITY_SERVICE
+            ) as ActivityManager
             val mi = ActivityManager.MemoryInfo()
             am.getMemoryInfo(mi)
             // 返回当前系统的可用内存

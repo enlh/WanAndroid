@@ -21,6 +21,7 @@ class NetWorkUtil {
         var NET_NOT_PREPARE = 3 // Net no ready
         var NET_ERROR = 4 //net error
         private val TIMEOUT = 3000 // TIMEOUT
+
         /**
          * check NetworkAvailable
          *
@@ -30,7 +31,8 @@ class NetWorkUtil {
         @JvmStatic
         fun isNetworkAvailable(context: Context): Boolean {
             val manager = context.applicationContext.getSystemService(
-                    Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+                Context.CONNECTIVITY_SERVICE
+            ) as ConnectivityManager
             val info = manager.activeNetworkInfo
             return !(null == info || !info.isAvailable)
         }
@@ -42,7 +44,8 @@ class NetWorkUtil {
          * @return
          */
         fun isNetworkConnected(context: Context): Boolean {
-            val manager = context.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val manager =
+                context.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val info = manager.activeNetworkInfo
             return !(null == info || !info.isConnected)
         }
@@ -85,7 +88,7 @@ class NetWorkUtil {
             var httpUrl: HttpURLConnection? = null
             try {
                 httpUrl = URL("http://www.baidu.com")
-                        .openConnection() as HttpURLConnection
+                    .openConnection() as HttpURLConnection
                 httpUrl.connectTimeout = TIMEOUT
                 httpUrl.connect()
                 result = true
@@ -107,7 +110,7 @@ class NetWorkUtil {
         @JvmStatic
         fun is3G(context: Context): Boolean {
             val connectivityManager = context
-                    .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+                .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val activeNetInfo = connectivityManager.activeNetworkInfo
             return activeNetInfo != null && activeNetInfo.type == ConnectivityManager.TYPE_MOBILE
         }
@@ -121,7 +124,7 @@ class NetWorkUtil {
         @JvmStatic
         fun isWifi(context: Context): Boolean {
             val connectivityManager = context
-                    .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+                .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val activeNetInfo = connectivityManager.activeNetworkInfo
             return activeNetInfo != null && activeNetInfo.type == ConnectivityManager.TYPE_WIFI
         }
@@ -135,11 +138,11 @@ class NetWorkUtil {
         @JvmStatic
         fun is2G(context: Context): Boolean {
             val connectivityManager = context
-                    .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+                .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val activeNetInfo = connectivityManager.activeNetworkInfo
             return activeNetInfo != null && (activeNetInfo.subtype == TelephonyManager.NETWORK_TYPE_EDGE
                     || activeNetInfo.subtype == TelephonyManager.NETWORK_TYPE_GPRS || activeNetInfo
-                    .subtype == TelephonyManager.NETWORK_TYPE_CDMA)
+                .subtype == TelephonyManager.NETWORK_TYPE_CDMA)
         }
 
         /**
@@ -148,12 +151,12 @@ class NetWorkUtil {
         @JvmStatic
         fun isWifiEnabled(context: Context): Boolean {
             val mgrConn = context
-                    .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+                .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val mgrTel = context
-                    .getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+                .getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
             return mgrConn.activeNetworkInfo != null && mgrConn
-                    .activeNetworkInfo.state == NetworkInfo.State.CONNECTED || mgrTel
-                    .networkType == TelephonyManager.NETWORK_TYPE_UMTS
+                .activeNetworkInfo.state == NetworkInfo.State.CONNECTED || mgrTel
+                .networkType == TelephonyManager.NETWORK_TYPE_UMTS
         }
 
         /**
@@ -162,7 +165,8 @@ class NetWorkUtil {
         fun isMobile(context: Context?): Boolean {
             if (context != null) {
                 //获取手机所有连接管理对象(包括对wi-fi,net等连接的管理)
-                val manager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+                val manager =
+                    context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
                 //获取NetworkInfo对象
                 val networkInfo = manager.activeNetworkInfo
                 //判断NetworkInfo对象是否为空 并且类型是否为MOBILE

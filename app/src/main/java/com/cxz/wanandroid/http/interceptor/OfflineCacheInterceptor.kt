@@ -19,9 +19,9 @@ class OfflineCacheInterceptor : Interceptor {
             // 无网络时，设置超时为4周  只对get有用,post没有缓冲
             val maxStale = 60 * 60 * 24 * 28
             response.newBuilder()
-                    .header("Cache-Control", "public, only-if-cached, max-stale=$maxStale")
-                    .removeHeader("nyn")
-                    .build()
+                .header("Cache-Control", "public, only-if-cached, max-stale=$maxStale")
+                .removeHeader("nyn")
+                .build()
         }
 
         return response

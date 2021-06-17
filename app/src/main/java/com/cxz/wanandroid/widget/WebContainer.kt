@@ -15,8 +15,11 @@ import com.cxz.wanandroid.utils.SettingUtil
  * @date 2019/11/24
  * @desc WebContainer
  */
-class WebContainer @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
-    : CoordinatorLayout(context, attrs, defStyleAttr) {
+class WebContainer @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : CoordinatorLayout(context, attrs, defStyleAttr) {
 
     private var mDarkTheme: Boolean = false
 
@@ -25,7 +28,8 @@ class WebContainer @JvmOverloads constructor(context: Context, attrs: AttributeS
     init {
         mDarkTheme = SettingUtil.getIsNightMode()
         if (mDarkTheme) {
-            mMaskColor = ColorUtil.alphaColor(ContextCompat.getColor(getContext(), R.color.mask_color), 0.6f)
+            mMaskColor =
+                ColorUtil.alphaColor(ContextCompat.getColor(getContext(), R.color.mask_color), 0.6f)
         }
     }
 

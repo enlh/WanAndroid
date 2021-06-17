@@ -8,7 +8,8 @@ import com.cxz.wanandroid.mvp.model.RegisterModel
 /**
  * Created by chenxz on 2018/6/3.
  */
-class RegisterPresenter : BasePresenter<RegisterContract.Model, RegisterContract.View>(), RegisterContract.Presenter {
+class RegisterPresenter : BasePresenter<RegisterContract.Model, RegisterContract.View>(),
+    RegisterContract.Presenter {
 
     override fun createModel(): RegisterContract.Model? = RegisterModel()
 

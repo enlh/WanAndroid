@@ -24,7 +24,8 @@ import org.greenrobot.eventbus.ThreadMode
 /**
  * Created by chenxz on 2018/6/9.
  */
-class CollectFragment : BaseMvpListFragment<CollectContract.View, CollectContract.Presenter>(), CollectContract.View {
+class CollectFragment : BaseMvpListFragment<CollectContract.View, CollectContract.Presenter>(),
+    CollectContract.View {
 
     companion object {
         fun getInstance(bundle: Bundle): CollectFragment {
@@ -162,16 +163,16 @@ class CollectFragment : BaseMvpListFragment<CollectContract.View, CollectContrac
      * ItemChildClickListener
      */
     private val onItemChildClickListener =
-            BaseQuickAdapter.OnItemChildClickListener { _, view, position ->
-                if (datas.size != 0) {
-                    val data = datas[position]
-                    when (view.id) {
-                        R.id.iv_like -> {
-                            mAdapter.remove(position)
-                            mPresenter?.removeCollectArticle(data.id, data.originId)
-                        }
+        BaseQuickAdapter.OnItemChildClickListener { _, view, position ->
+            if (datas.size != 0) {
+                val data = datas[position]
+                when (view.id) {
+                    R.id.iv_like -> {
+                        mAdapter.remove(position)
+                        mPresenter?.removeCollectArticle(data.id, data.originId)
                     }
                 }
             }
+        }
 
 }

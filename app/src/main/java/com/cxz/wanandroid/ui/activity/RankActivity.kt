@@ -18,7 +18,8 @@ import kotlinx.android.synthetic.main.toolbar.*
 /**
  * 排行榜页面
  */
-class RankActivity : BaseMvpSwipeBackActivity<RankContract.View, RankContract.Presenter>(), RankContract.View {
+class RankActivity : BaseMvpSwipeBackActivity<RankContract.View, RankContract.Presenter>(),
+    RankContract.View {
 
     /**
      * 每页数据的个数
@@ -128,6 +129,7 @@ class RankActivity : BaseMvpSwipeBackActivity<RankContract.View, RankContract.Pr
         rankAdapter.setEnableLoadMore(false)
         mPresenter?.getRankList(1)
     }
+
     /**
      * LoadMoreListener
      */

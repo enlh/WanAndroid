@@ -8,7 +8,8 @@ import com.cxz.wanandroid.mvp.model.CollectModel
 /**
  * Created by chenxz on 2018/6/9.
  */
-class CollectPresenter : BasePresenter<CollectContract.Model, CollectContract.View>(), CollectContract.Presenter {
+class CollectPresenter : BasePresenter<CollectContract.Model, CollectContract.View>(),
+    CollectContract.Presenter {
 
     override fun createModel(): CollectContract.Model? = CollectModel()
 

@@ -11,7 +11,8 @@ import com.cxz.wanandroid.mvp.model.bean.TodoTypeBean
  * @date 2018/11/25
  * @desc
  */
-class TodoPopupAdapter : BaseQuickAdapter<TodoTypeBean, BaseViewHolder>(R.layout.item_todo_popup_list) {
+class TodoPopupAdapter :
+    BaseQuickAdapter<TodoTypeBean, BaseViewHolder>(R.layout.item_todo_popup_list) {
 
     override fun convert(helper: BaseViewHolder?, item: TodoTypeBean?) {
         helper ?: return

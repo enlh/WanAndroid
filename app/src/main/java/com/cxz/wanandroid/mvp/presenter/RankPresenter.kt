@@ -10,7 +10,8 @@ import com.cxz.wanandroid.mvp.model.RankModel
  * @date 2019/9/5
  * @desc
  */
-class RankPresenter : BasePresenter<RankContract.Model, RankContract.View>(), RankContract.Presenter {
+class RankPresenter : BasePresenter<RankContract.Model, RankContract.View>(),
+    RankContract.Presenter {
 
     override fun createModel(): RankContract.Model? = RankModel()
 

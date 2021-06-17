@@ -31,7 +31,8 @@ import org.greenrobot.eventbus.ThreadMode
  * @date 2019/11/16
  * @desc 广场
  */
-class SquareFragment : BaseMvpListFragment<SquareContract.View, SquarePresenter>(), SquareContract.View {
+class SquareFragment : BaseMvpListFragment<SquareContract.View, SquarePresenter>(),
+    SquareContract.View {
 
     companion object {
         fun getInstance(): SquareFragment = SquareFragment()
@@ -177,33 +178,33 @@ class SquareFragment : BaseMvpListFragment<SquareContract.View, SquarePresenter>
      * ItemChildClickListener
      */
     private val onItemChildClickListener =
-            BaseQuickAdapter.OnItemChildClickListener { _, view, position ->
-                if (datas.size != 0) {
-                    val data = datas[position]
-                    when (view.id) {
-                        R.id.iv_like -> {
-                            if (isLogin) {
-                                if (!NetWorkUtil.isNetworkAvailable(App.context)) {
-                                    showSnackMsg(resources.getString(R.string.no_network))
-                                    return@OnItemChildClickListener
-                                }
-                                val collect = data.collect
-                                data.collect = !collect
-                                mAdapter.setData(position, data)
-                                if (collect) {
-                                    mPresenter?.cancelCollectArticle(data.id)
-                                } else {
-                                    mPresenter?.addCollectArticle(data.id)
-                                }
-                            } else {
-                                Intent(activity, LoginActivity::class.java).run {
-                                    startActivity(this)
-                                }
-                                showToast(resources.getString(R.string.login_tint))
+        BaseQuickAdapter.OnItemChildClickListener { _, view, position ->
+            if (datas.size != 0) {
+                val data = datas[position]
+                when (view.id) {
+                    R.id.iv_like -> {
+                        if (isLogin) {
+                            if (!NetWorkUtil.isNetworkAvailable(App.context)) {
+                                showSnackMsg(resources.getString(R.string.no_network))
+                                return@OnItemChildClickListener
                             }
+                            val collect = data.collect
+                            data.collect = !collect
+                            mAdapter.setData(position, data)
+                            if (collect) {
+                                mPresenter?.cancelCollectArticle(data.id)
+                            } else {
+                                mPresenter?.addCollectArticle(data.id)
+                            }
+                        } else {
+                            Intent(activity, LoginActivity::class.java).run {
+                                startActivity(this)
+                            }
+                            showToast(resources.getString(R.string.login_tint))
                         }
                     }
                 }
             }
+        }
 
 }

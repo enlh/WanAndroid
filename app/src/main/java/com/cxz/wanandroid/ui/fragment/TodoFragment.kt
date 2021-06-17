@@ -30,7 +30,8 @@ import org.greenrobot.eventbus.ThreadMode
  * Created by chenxz on 2018/8/6.
  */
 
-class TodoFragment : BaseMvpListFragment<TodoContract.View, TodoContract.Presenter>(), TodoContract.View {
+class TodoFragment : BaseMvpListFragment<TodoContract.View, TodoContract.Presenter>(),
+    TodoContract.View {
 
     companion object {
         fun getInstance(type: Int): TodoFragment {
@@ -221,54 +222,55 @@ class TodoFragment : BaseMvpListFragment<TodoContract.View, TodoContract.Present
      * ItemChildClickListener
      */
     private val onItemChildClickListener =
-            BaseQuickAdapter.OnItemChildClickListener { _, view, position ->
-                if (datas.size != 0) {
-                    val data = datas[position].t
-                    when (view.id) {
-                        R.id.btn_delete -> {
-                            if (!NetWorkUtil.isNetworkAvailable(App.context)) {
-                                showSnackMsg(resources.getString(R.string.no_network))
-                                return@OnItemChildClickListener
-                            }
-                            activity?.let {
-                                DialogUtil.getConfirmDialog(it, resources.getString(R.string.confirm_delete),
-                                        DialogInterface.OnClickListener { _, _ ->
-                                            mPresenter?.deleteTodoById(data.id)
-                                            mAdapter.remove(position)
-                                        }).show()
-                            }
+        BaseQuickAdapter.OnItemChildClickListener { _, view, position ->
+            if (datas.size != 0) {
+                val data = datas[position].t
+                when (view.id) {
+                    R.id.btn_delete -> {
+                        if (!NetWorkUtil.isNetworkAvailable(App.context)) {
+                            showSnackMsg(resources.getString(R.string.no_network))
+                            return@OnItemChildClickListener
                         }
-                        R.id.btn_done -> {
-                            if (!NetWorkUtil.isNetworkAvailable(App.context)) {
-                                showSnackMsg(resources.getString(R.string.no_network))
-                                return@OnItemChildClickListener
-                            }
-                            if (bDone) {
-                                mPresenter?.updateTodoById(data.id, 0)
-                            } else {
-                                mPresenter?.updateTodoById(data.id, 1)
-                            }
-                            mAdapter.remove(position)
+                        activity?.let {
+                            DialogUtil.getConfirmDialog(it,
+                                resources.getString(R.string.confirm_delete),
+                                DialogInterface.OnClickListener { _, _ ->
+                                    mPresenter?.deleteTodoById(data.id)
+                                    mAdapter.remove(position)
+                                }).show()
                         }
-                        R.id.item_todo_content -> {
-                            if (bDone) {
-                                Intent(activity, CommonActivity::class.java).run {
-                                    putExtra(Constant.TYPE_KEY, Constant.Type.SEE_TODO_TYPE_KEY)
-                                    putExtra(Constant.TODO_BEAN, data)
-                                    putExtra(Constant.TODO_TYPE, mType)
-                                    startActivity(this)
-                                }
-                            } else {
-                                Intent(activity, CommonActivity::class.java).run {
-                                    putExtra(Constant.TYPE_KEY, Constant.Type.EDIT_TODO_TYPE_KEY)
-                                    putExtra(Constant.TODO_BEAN, data)
-                                    putExtra(Constant.TODO_TYPE, mType)
-                                    startActivity(this)
-                                }
+                    }
+                    R.id.btn_done -> {
+                        if (!NetWorkUtil.isNetworkAvailable(App.context)) {
+                            showSnackMsg(resources.getString(R.string.no_network))
+                            return@OnItemChildClickListener
+                        }
+                        if (bDone) {
+                            mPresenter?.updateTodoById(data.id, 0)
+                        } else {
+                            mPresenter?.updateTodoById(data.id, 1)
+                        }
+                        mAdapter.remove(position)
+                    }
+                    R.id.item_todo_content -> {
+                        if (bDone) {
+                            Intent(activity, CommonActivity::class.java).run {
+                                putExtra(Constant.TYPE_KEY, Constant.Type.SEE_TODO_TYPE_KEY)
+                                putExtra(Constant.TODO_BEAN, data)
+                                putExtra(Constant.TODO_TYPE, mType)
+                                startActivity(this)
+                            }
+                        } else {
+                            Intent(activity, CommonActivity::class.java).run {
+                                putExtra(Constant.TYPE_KEY, Constant.Type.EDIT_TODO_TYPE_KEY)
+                                putExtra(Constant.TODO_BEAN, data)
+                                putExtra(Constant.TODO_TYPE, mType)
+                                startActivity(this)
                             }
                         }
                     }
                 }
             }
+        }
 
 }

@@ -10,7 +10,8 @@ import com.cxz.wanandroid.ui.fragment.TodoFragment
 /**
  * Created by chenxz on 2018/8/6.
  */
-class TodoPagerAdapter(val list: List<TodoTypeBean>, fm: FragmentManager) : FragmentPagerAdapter(fm) {
+class TodoPagerAdapter(val list: List<TodoTypeBean>, fm: FragmentManager) :
+    FragmentPagerAdapter(fm) {
 
     private val fragments = mutableListOf<TodoFragment>()
 

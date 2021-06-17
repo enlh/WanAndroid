@@ -16,7 +16,9 @@ import kotlinx.android.synthetic.main.fragment_refresh_layout.*
 /**
  * Created by chenxz on 2018/5/8.
  */
-class KnowledgeTreeFragment : BaseMvpListFragment<KnowledgeTreeContract.View, KnowledgeTreeContract.Presenter>(), KnowledgeTreeContract.View {
+class KnowledgeTreeFragment :
+    BaseMvpListFragment<KnowledgeTreeContract.View, KnowledgeTreeContract.Presenter>(),
+    KnowledgeTreeContract.View {
 
     companion object {
         fun getInstance(): KnowledgeTreeFragment = KnowledgeTreeFragment()

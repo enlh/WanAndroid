@@ -4,8 +4,8 @@ import com.cxz.wanandroid.base.IModel
 import com.cxz.wanandroid.base.IPresenter
 import com.cxz.wanandroid.base.IView
 import com.cxz.wanandroid.mvp.model.bean.BaseListResponseBody
-import com.cxz.wanandroid.mvp.model.bean.HttpResult
 import com.cxz.wanandroid.mvp.model.bean.CoinInfoBean
+import com.cxz.wanandroid.mvp.model.bean.HttpResult
 import io.reactivex.Observable
 
 /**

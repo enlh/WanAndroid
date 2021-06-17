@@ -24,18 +24,22 @@ object FileProvider7 {
 
 
     fun getUriForFile24(context: Context, file: File): Uri {
-        val fileUri = android.support.v4.content.FileProvider.getUriForFile(context,
-                context.packageName + ".fileprovider",
-                file)
+        val fileUri = android.support.v4.content.FileProvider.getUriForFile(
+            context,
+            context.packageName + ".fileprovider",
+            file
+        )
         return fileUri
     }
 
 
-    fun setIntentDataAndType(context: Context,
-                             intent: Intent,
-                             type: String,
-                             file: File,
-                             writeAble: Boolean) {
+    fun setIntentDataAndType(
+        context: Context,
+        intent: Intent,
+        type: String,
+        file: File,
+        writeAble: Boolean
+    ) {
         if (Build.VERSION.SDK_INT >= 24) {
             intent.setDataAndType(getUriForFile(context, file), type)
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
@@ -47,10 +51,12 @@ object FileProvider7 {
         }
     }
 
-    fun setIntentData(context: Context,
-                      intent: Intent,
-                      file: File,
-                      writeAble: Boolean) {
+    fun setIntentData(
+        context: Context,
+        intent: Intent,
+        file: File,
+        writeAble: Boolean
+    ) {
         if (Build.VERSION.SDK_INT >= 24) {
             intent.data = getUriForFile(context, file)
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
@@ -70,7 +76,7 @@ object FileProvider7 {
         }
         intent.addFlags(flag)
         val resInfoList = context.packageManager
-                .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
+            .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
         for (resolveInfo in resInfoList) {
             val packageName = resolveInfo.activityInfo.packageName
             context.grantUriPermission(packageName, uri, flag)

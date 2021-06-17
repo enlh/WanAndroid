@@ -11,7 +11,8 @@ import com.cxz.wanandroid.mvp.model.MainModel
  * @date 2018/8/30
  * @desc
  */
-class MainPresenter : BasePresenter<MainContract.Model, MainContract.View>(), MainContract.Presenter {
+class MainPresenter : BasePresenter<MainContract.Model, MainContract.View>(),
+    MainContract.Presenter {
 
     override fun createModel(): MainContract.Model? = MainModel()
 

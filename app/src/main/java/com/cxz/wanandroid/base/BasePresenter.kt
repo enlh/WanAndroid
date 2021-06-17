@@ -87,6 +87,7 @@ abstract class BasePresenter<M : IModel, V : IView> : IPresenter<V>, LifecycleOb
         owner.lifecycle.removeObserver(this)
     }
 
-    private class MvpViewNotAttachedException internal constructor() : RuntimeException("Please call IPresenter.attachView(IBaseView) before" + " requesting data to the IPresenter")
+    private class MvpViewNotAttachedException internal constructor() :
+        RuntimeException("Please call IPresenter.attachView(IBaseView) before" + " requesting data to the IPresenter")
 
 }

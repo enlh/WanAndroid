@@ -8,7 +8,8 @@ import com.cxz.wanandroid.mvp.model.NavigationModel
 /**
  * Created by chenxz on 2018/5/13.
  */
-class NavigationPresenter : BasePresenter<NavigationContract.Model, NavigationContract.View>(), NavigationContract.Presenter {
+class NavigationPresenter : BasePresenter<NavigationContract.Model, NavigationContract.View>(),
+    NavigationContract.Presenter {
 
     override fun createModel(): NavigationContract.Model? = NavigationModel()
 

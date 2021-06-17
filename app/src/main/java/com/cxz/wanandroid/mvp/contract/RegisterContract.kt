@@ -26,7 +26,11 @@ interface RegisterContract {
     }
 
     interface Model : IModel {
-        fun registerWanAndroid(username: String, password: String, repassword: String): Observable<HttpResult<LoginData>>
+        fun registerWanAndroid(
+            username: String,
+            password: String,
+            repassword: String
+        ): Observable<HttpResult<LoginData>>
     }
 
 }

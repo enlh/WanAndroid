@@ -22,13 +22,18 @@ class StatusBarCompat {
                 var contentView: ViewGroup = activity.findViewById(android.R.id.content)
                 var statusBarView: View = contentView.getChildAt(0)
                 // 改变颜色时避免重复添加statusBarView
-                if (statusBarView != null && statusBarView.measuredHeight == getStatusBarHeight(activity)) {
+                if (statusBarView != null && statusBarView.measuredHeight == getStatusBarHeight(
+                        activity
+                    )
+                ) {
                     statusBarView.setBackgroundColor(statusColor)
                     return
                 }
                 statusBarView = View(activity)
-                var lp: ViewGroup.LayoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        getStatusBarHeight(activity))
+                var lp: ViewGroup.LayoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    getStatusBarHeight(activity)
+                )
                 statusBarView.setBackgroundColor(statusColor)
                 contentView.addView(statusBarView, lp)
             }
@@ -40,7 +45,8 @@ class StatusBarCompat {
          */
         fun getStatusBarHeight(context: Context): Int {
             var result = 24
-            val resourceId = context.resources.getIdentifier("status_bar_height", "dimen", "android")
+            val resourceId =
+                context.resources.getIdentifier("status_bar_height", "dimen", "android")
             if (resourceId > 0) {
                 result = context.resources.getDimensionPixelSize(resourceId)
             }

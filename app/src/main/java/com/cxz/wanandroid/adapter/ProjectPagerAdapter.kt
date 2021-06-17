@@ -11,7 +11,8 @@ import com.cxz.wanandroid.ui.fragment.ProjectListFragment
 /**
  * Created by chenxz on 2018/5/20.
  */
-class ProjectPagerAdapter(private val list: MutableList<ProjectTreeBean>, fm: FragmentManager?) : FragmentStatePagerAdapter(fm) {
+class ProjectPagerAdapter(private val list: MutableList<ProjectTreeBean>, fm: FragmentManager?) :
+    FragmentStatePagerAdapter(fm) {
 
     private val fragments = mutableListOf<Fragment>()
 

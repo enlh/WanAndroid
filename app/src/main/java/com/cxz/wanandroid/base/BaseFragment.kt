@@ -34,10 +34,12 @@ abstract class BaseFragment : Fragment() {
      * 视图是否加载完毕
      */
     private var isViewPrepare = false
+
     /**
      * 数据是否加载过了
      */
     private var hasLoadData = false
+
     /**
      * 多种状态的 View 的切换
      */
@@ -71,7 +73,11 @@ abstract class BaseFragment : Fragment() {
         lazyLoad()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater?.inflate(attachLayoutRes(), null)
     }
 

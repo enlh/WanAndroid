@@ -15,7 +15,6 @@ import com.cxz.wanandroid.R
 import com.cxz.wanandroid.adapter.SearchHistoryAdapter
 import com.cxz.wanandroid.base.BaseMvpSwipeBackActivity
 import com.cxz.wanandroid.constant.Constant
-import com.cxz.wanandroid.ext.showToast
 import com.cxz.wanandroid.mvp.contract.SearchContract
 import com.cxz.wanandroid.mvp.model.bean.HotSearchBean
 import com.cxz.wanandroid.mvp.model.bean.SearchHistoryBean
@@ -28,7 +27,8 @@ import com.zhy.view.flowlayout.TagAdapter
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.toolbar_search.*
 
-class SearchActivity : BaseMvpSwipeBackActivity<SearchContract.View, SearchContract.Presenter>(), SearchContract.View {
+class SearchActivity : BaseMvpSwipeBackActivity<SearchContract.View, SearchContract.Presenter>(),
+    SearchContract.View {
 
     override fun createPresenter(): SearchContract.Presenter = SearchPresenter()
 
@@ -133,9 +133,15 @@ class SearchActivity : BaseMvpSwipeBackActivity<SearchContract.View, SearchContr
     override fun showHotSearchData(hotSearchDatas: MutableList<HotSearchBean>) {
         this.mHotSearchDatas.addAll(hotSearchDatas)
         hot_search_flow_layout.adapter = object : TagAdapter<HotSearchBean>(hotSearchDatas) {
-            override fun getView(parent: FlowLayout?, position: Int, hotSearchBean: HotSearchBean?): View {
-                val tv: TextView = LayoutInflater.from(parent?.context).inflate(R.layout.flow_layout_tv,
-                        hot_search_flow_layout, false) as TextView
+            override fun getView(
+                parent: FlowLayout?,
+                position: Int,
+                hotSearchBean: HotSearchBean?
+            ): View {
+                val tv: TextView = LayoutInflater.from(parent?.context).inflate(
+                    R.layout.flow_layout_tv,
+                    hot_search_flow_layout, false
+                ) as TextView
                 val padding: Int = DisplayManager.dip2px(10F)!!
                 tv.setPadding(padding, padding, padding, padding)
                 tv.text = hotSearchBean?.name
@@ -193,16 +199,16 @@ class SearchActivity : BaseMvpSwipeBackActivity<SearchContract.View, SearchContr
      * ItemChildClickListener
      */
     private val onItemChildClickListener =
-            BaseQuickAdapter.OnItemChildClickListener { _, view, position ->
-                if (searchHistoryAdapter.data.size != 0) {
-                    val item = searchHistoryAdapter.data[position]
-                    when (view.id) {
-                        R.id.iv_clear -> {
-                            mPresenter?.deleteById(item.id)
-                            searchHistoryAdapter.remove(position)
-                        }
+        BaseQuickAdapter.OnItemChildClickListener { _, view, position ->
+            if (searchHistoryAdapter.data.size != 0) {
+                val item = searchHistoryAdapter.data[position]
+                when (view.id) {
+                    R.id.iv_clear -> {
+                        mPresenter?.deleteById(item.id)
+                        searchHistoryAdapter.remove(position)
                     }
                 }
             }
+        }
 
 }

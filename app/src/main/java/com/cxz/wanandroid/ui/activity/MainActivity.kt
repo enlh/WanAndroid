@@ -38,7 +38,8 @@ import org.greenrobot.eventbus.ThreadMode
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
-class MainActivity : BaseMvpActivity<MainContract.View, MainContract.Presenter>(), MainContract.View {
+class MainActivity : BaseMvpActivity<MainContract.View, MainContract.Presenter>(),
+    MainContract.View {
 
     private val BOTTOM_INDEX: String = "bottom_index"
 
@@ -67,22 +68,27 @@ class MainActivity : BaseMvpActivity<MainContract.View, MainContract.Presenter>(
      * username TextView
      */
     private var nav_username: TextView? = null
+
     /**
      * user_id TextView
      */
     private var nav_user_id: TextView? = null
+
     /**
      * user_grade TextView
      */
     private var nav_user_grade: TextView? = null
+
     /**
      * user_rank TextView
      */
     private var nav_user_rank: TextView? = null
+
     /**
      * score TextView
      */
     private var nav_score: TextView? = null
+
     /**
      * rank ImageView
      */
@@ -152,7 +158,8 @@ class MainActivity : BaseMvpActivity<MainContract.View, MainContract.Presenter>(
             nav_user_grade = getHeaderView(0).findViewById(R.id.tv_user_grade)
             nav_user_rank = getHeaderView(0).findViewById(R.id.tv_user_rank)
             nav_rank = getHeaderView(0).findViewById(R.id.iv_rank)
-            nav_score = MenuItemCompat.getActionView(nav_view.menu.findItem(R.id.nav_score)) as TextView
+            nav_score =
+                MenuItemCompat.getActionView(nav_view.menu.findItem(R.id.nav_score)) as TextView
             nav_score?.gravity = Gravity.CENTER_VERTICAL
             menu.findItem(R.id.nav_logout).isVisible = isLogin
         }
@@ -183,11 +190,11 @@ class MainActivity : BaseMvpActivity<MainContract.View, MainContract.Presenter>(
 //        }
         drawer_layout.run {
             val toggle = ActionBarDrawerToggle(
-                    this@MainActivity,
-                    this,
-                    toolbar
-                    , R.string.navigation_drawer_open,
-                    R.string.navigation_drawer_close)
+                this@MainActivity,
+                this,
+                toolbar, R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close
+            )
             addDrawerListener(toggle)
             toggle.syncState()
         }
@@ -322,104 +329,104 @@ class MainActivity : BaseMvpActivity<MainContract.View, MainContract.Presenter>(
      * NavigationItemSelect监听
      */
     private val onNavigationItemSelectedListener =
-            BottomNavigationView.OnNavigationItemSelectedListener { item ->
-                return@OnNavigationItemSelectedListener when (item.itemId) {
-                    R.id.action_home -> {
-                        showFragment(FRAGMENT_HOME)
-                        true
-                    }
-                    R.id.action_square -> {
-                        showFragment(FRAGMENT_SQUARE)
-                        true
-                    }
-                    R.id.action_system -> {
-                        showFragment(FRAGMENT_SYSTEM)
-                        true
-                    }
-                    R.id.action_project -> {
-                        showFragment(FRAGMENT_PROJECT)
-                        true
-                    }
-                    R.id.action_wechat -> {
-                        showFragment(FRAGMENT_WECHAT)
-                        true
-                    }
-                    else -> {
-                        false
-                    }
-
+        BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            return@OnNavigationItemSelectedListener when (item.itemId) {
+                R.id.action_home -> {
+                    showFragment(FRAGMENT_HOME)
+                    true
                 }
+                R.id.action_square -> {
+                    showFragment(FRAGMENT_SQUARE)
+                    true
+                }
+                R.id.action_system -> {
+                    showFragment(FRAGMENT_SYSTEM)
+                    true
+                }
+                R.id.action_project -> {
+                    showFragment(FRAGMENT_PROJECT)
+                    true
+                }
+                R.id.action_wechat -> {
+                    showFragment(FRAGMENT_WECHAT)
+                    true
+                }
+                else -> {
+                    false
+                }
+
             }
+        }
 
     /**
      * NavigationView 监听
      */
     private val onDrawerNavigationItemSelectedListener =
-            NavigationView.OnNavigationItemSelectedListener { item ->
-                when (item.itemId) {
-                    R.id.nav_score -> {
-                        if (isLogin) {
-                            Intent(this@MainActivity, ScoreActivity::class.java).run {
-                                startActivity(this)
-                            }
-                        } else {
-                            showToast(resources.getString(R.string.login_tint))
-                            goLogin()
-                        }
-                    }
-                    R.id.nav_collect -> {
-                        if (isLogin) {
-                            goCommonActivity(Constant.Type.COLLECT_TYPE_KEY)
-                        } else {
-                            showToast(resources.getString(R.string.login_tint))
-                            goLogin()
-                        }
-                    }
-                    R.id.nav_share -> {
-                        if (isLogin) {
-                            startActivity(Intent(this, ShareActivity::class.java))
-                        } else {
-                            showToast(resources.getString(R.string.login_tint))
-                            goLogin()
-                        }
-                    }
-                    R.id.nav_setting -> {
-                        Intent(this@MainActivity, SettingActivity::class.java).run {
-                            // putExtra(Constant.TYPE_KEY, Constant.Type.SETTING_TYPE_KEY)
+        NavigationView.OnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_score -> {
+                    if (isLogin) {
+                        Intent(this@MainActivity, ScoreActivity::class.java).run {
                             startActivity(this)
                         }
-                    }
-                    //R.id.nav_about_us -> {
-                    //    goCommonActivity(Constant.Type.ABOUT_US_TYPE_KEY)
-                    //}
-                    R.id.nav_logout -> {
-                        logout()
-                    }
-                    R.id.nav_night_mode -> {
-                        if (SettingUtil.getIsNightMode()) {
-                            SettingUtil.setIsNightMode(false)
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                        } else {
-                            SettingUtil.setIsNightMode(true)
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                        }
-                        window.setWindowAnimations(R.style.WindowAnimationFadeInOut)
-                        recreate()
-                    }
-                    R.id.nav_todo -> {
-                        if (isLogin) {
-                            Intent(this@MainActivity, TodoActivity::class.java).run {
-                                startActivity(this)
-                            }
-                        } else {
-                            showToast(resources.getString(R.string.login_tint))
-                            goLogin()
-                        }
+                    } else {
+                        showToast(resources.getString(R.string.login_tint))
+                        goLogin()
                     }
                 }
-                // drawer_layout.closeDrawer(GravityCompat.START)
-                true
+                R.id.nav_collect -> {
+                    if (isLogin) {
+                        goCommonActivity(Constant.Type.COLLECT_TYPE_KEY)
+                    } else {
+                        showToast(resources.getString(R.string.login_tint))
+                        goLogin()
+                    }
+                }
+                R.id.nav_share -> {
+                    if (isLogin) {
+                        startActivity(Intent(this, ShareActivity::class.java))
+                    } else {
+                        showToast(resources.getString(R.string.login_tint))
+                        goLogin()
+                    }
+                }
+                R.id.nav_setting -> {
+                    Intent(this@MainActivity, SettingActivity::class.java).run {
+                        // putExtra(Constant.TYPE_KEY, Constant.Type.SETTING_TYPE_KEY)
+                        startActivity(this)
+                    }
+                }
+                //R.id.nav_about_us -> {
+                //    goCommonActivity(Constant.Type.ABOUT_US_TYPE_KEY)
+                //}
+                R.id.nav_logout -> {
+                    logout()
+                }
+                R.id.nav_night_mode -> {
+                    if (SettingUtil.getIsNightMode()) {
+                        SettingUtil.setIsNightMode(false)
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    } else {
+                        SettingUtil.setIsNightMode(true)
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    }
+                    window.setWindowAnimations(R.style.WindowAnimationFadeInOut)
+                    recreate()
+                }
+                R.id.nav_todo -> {
+                    if (isLogin) {
+                        Intent(this@MainActivity, TodoActivity::class.java).run {
+                            startActivity(this)
+                        }
+                    } else {
+                        showToast(resources.getString(R.string.login_tint))
+                        goLogin()
+                    }
+                }
             }
+            // drawer_layout.closeDrawer(GravityCompat.START)
+            true
+        }
 
     private fun goCommonActivity(type: String) {
         Intent(this@MainActivity, CommonActivity::class.java).run {
@@ -474,10 +481,10 @@ class MainActivity : BaseMvpActivity<MainContract.View, MainContract.Presenter>(
      */
     private fun logout() {
         DialogUtil.getConfirmDialog(this, resources.getString(R.string.confirm_logout),
-                DialogInterface.OnClickListener { _, _ ->
-                    mDialog.show()
-                    mPresenter?.logout()
-                }).show()
+            DialogInterface.OnClickListener { _, _ ->
+                mDialog.show()
+                mPresenter?.logout()
+            }).show()
     }
 
     override fun showLogoutSuccess(success: Boolean) {

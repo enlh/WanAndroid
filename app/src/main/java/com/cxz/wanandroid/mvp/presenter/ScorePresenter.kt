@@ -10,7 +10,8 @@ import com.cxz.wanandroid.mvp.model.ScoreModel
  * @date 2019/9/5
  * @desc
  */
-class ScorePresenter : BasePresenter<ScoreContract.Model, ScoreContract.View>(), ScoreContract.Presenter {
+class ScorePresenter : BasePresenter<ScoreContract.Model, ScoreContract.View>(),
+    ScoreContract.Presenter {
 
     override fun createModel(): ScoreContract.Model? = ScoreModel()
 

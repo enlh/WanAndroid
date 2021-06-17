@@ -33,7 +33,8 @@ import org.greenrobot.eventbus.ThreadMode
  * @date 2019/11/15
  * @desc 我的分享
  */
-class ShareActivity : BaseMvpSwipeBackActivity<ShareContract.View, SharePresenter>(), ShareContract.View {
+class ShareActivity : BaseMvpSwipeBackActivity<ShareContract.View, SharePresenter>(),
+    ShareContract.View {
 
     private var pageSize = 20
 
@@ -187,44 +188,45 @@ class ShareActivity : BaseMvpSwipeBackActivity<ShareContract.View, SharePresente
      * ItemChildClickListener
      */
     private val onItemChildClickListener =
-            BaseQuickAdapter.OnItemChildClickListener { _, view, position ->
-                if (!NetWorkUtil.isNetworkAvailable(App.context)) {
-                    showSnackMsg(resources.getString(R.string.no_network))
-                    return@OnItemChildClickListener
-                }
-                if (datas.isNotEmpty()) {
-                    val data = datas[position]
-                    when (view.id) {
-                        R.id.rl_content -> {
-                            ContentActivity.start(this, data.id, data.title, data.link)
-                        }
-                        R.id.iv_like -> {
-                            if (isLogin) {
-                                val collect = data.collect
-                                data.collect = !collect
-                                shareAdapter.setData(position, data)
-                                if (collect) {
-                                    mPresenter?.cancelCollectArticle(data.id)
-                                } else {
-                                    mPresenter?.addCollectArticle(data.id)
-                                }
+        BaseQuickAdapter.OnItemChildClickListener { _, view, position ->
+            if (!NetWorkUtil.isNetworkAvailable(App.context)) {
+                showSnackMsg(resources.getString(R.string.no_network))
+                return@OnItemChildClickListener
+            }
+            if (datas.isNotEmpty()) {
+                val data = datas[position]
+                when (view.id) {
+                    R.id.rl_content -> {
+                        ContentActivity.start(this, data.id, data.title, data.link)
+                    }
+                    R.id.iv_like -> {
+                        if (isLogin) {
+                            val collect = data.collect
+                            data.collect = !collect
+                            shareAdapter.setData(position, data)
+                            if (collect) {
+                                mPresenter?.cancelCollectArticle(data.id)
                             } else {
-                                Intent(this, LoginActivity::class.java).run {
-                                    startActivity(this)
-                                }
-                                showMsg(resources.getString(R.string.login_tint))
+                                mPresenter?.addCollectArticle(data.id)
                             }
+                        } else {
+                            Intent(this, LoginActivity::class.java).run {
+                                startActivity(this)
+                            }
+                            showMsg(resources.getString(R.string.login_tint))
                         }
-                        R.id.btn_delete -> {
-                            DialogUtil.getConfirmDialog(this, resources.getString(R.string.confirm_delete),
-                                    DialogInterface.OnClickListener { _, _ ->
-                                        mPresenter?.deleteShareArticle(data.id)
-                                        shareAdapter.remove(position)
-                                    }).show()
-                        }
+                    }
+                    R.id.btn_delete -> {
+                        DialogUtil.getConfirmDialog(this,
+                            resources.getString(R.string.confirm_delete),
+                            DialogInterface.OnClickListener { _, _ ->
+                                mPresenter?.deleteShareArticle(data.id)
+                                shareAdapter.remove(position)
+                            }).show()
                     }
                 }
             }
+        }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_share, menu)

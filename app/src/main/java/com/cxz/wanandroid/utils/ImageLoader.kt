@@ -28,13 +28,13 @@ object ImageLoader {
             iv?.apply {
                 Glide.with(context!!).clear(iv)
                 val options = RequestOptions()
-                        .diskCacheStrategy(DiskCacheStrategy.DATA)
-                        .placeholder(R.drawable.bg_placeholder)
+                    .diskCacheStrategy(DiskCacheStrategy.DATA)
+                    .placeholder(R.drawable.bg_placeholder)
                 Glide.with(context!!)
-                        .load(url)
-                        .transition(DrawableTransitionOptions().crossFade())
-                        .apply(options)
-                        .into(iv)
+                    .load(url)
+                    .transition(DrawableTransitionOptions().crossFade())
+                    .apply(options)
+                    .into(iv)
             }
         }
 

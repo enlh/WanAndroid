@@ -19,11 +19,11 @@ open class BaseWebClient : WebViewClient() {
 
     // 拦截的网址
     private val blackHostList = arrayListOf(
-            "www.taobao.com",
-            "www.jd.com",
-            "yun.tuisnake.com",
-            "yun.lvehaisen.com",
-            "yun.tuitiger.com"
+        "www.taobao.com",
+        "www.jd.com",
+        "yun.tuisnake.com",
+        "yun.lvehaisen.com",
+        "yun.tuitiger.com"
     )
 
     private fun isBlackHost(host: String): Boolean {
@@ -52,7 +52,10 @@ open class BaseWebClient : WebViewClient() {
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    override fun shouldInterceptRequest(view: WebView?, request: WebResourceRequest?): WebResourceResponse? {
+    override fun shouldInterceptRequest(
+        view: WebView?,
+        request: WebResourceRequest?
+    ): WebResourceResponse? {
         if (shouldInterceptRequest(request?.url)) {
             return WebResourceResponse(null, null, null)
         }

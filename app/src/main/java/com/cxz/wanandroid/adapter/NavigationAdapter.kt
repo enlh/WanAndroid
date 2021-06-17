@@ -20,8 +20,8 @@ import com.zhy.view.flowlayout.TagFlowLayout
 /**
  * Created by chenxz on 2018/5/13.
  */
-class NavigationAdapter(context: Context?, datas: MutableList<NavigationBean>)
-    : BaseQuickAdapter<NavigationBean, BaseViewHolder>(R.layout.item_navigation_list, datas) {
+class NavigationAdapter(context: Context?, datas: MutableList<NavigationBean>) :
+    BaseQuickAdapter<NavigationBean, BaseViewHolder>(R.layout.item_navigation_list, datas) {
 
     override fun convert(helper: BaseViewHolder?, item: NavigationBean?) {
         item ?: return
@@ -32,8 +32,10 @@ class NavigationAdapter(context: Context?, datas: MutableList<NavigationBean>)
             adapter = object : TagAdapter<Article>(articles) {
                 override fun getView(parent: FlowLayout?, position: Int, article: Article?): View? {
 
-                    val tv: TextView = LayoutInflater.from(parent?.context).inflate(R.layout.flow_layout_tv,
-                            flowLayout, false) as TextView
+                    val tv: TextView = LayoutInflater.from(parent?.context).inflate(
+                        R.layout.flow_layout_tv,
+                        flowLayout, false
+                    ) as TextView
 
                     article ?: return null
 
@@ -43,13 +45,21 @@ class NavigationAdapter(context: Context?, datas: MutableList<NavigationBean>)
                     tv.setTextColor(CommonUtil.randomColor())
 
                     setOnTagClickListener { view, position, _ ->
-                        val options: ActivityOptions = ActivityOptions.makeScaleUpAnimation(view,
-                                view.width / 2,
-                                view.height / 2,
-                                0,
-                                0)
+                        val options: ActivityOptions = ActivityOptions.makeScaleUpAnimation(
+                            view,
+                            view.width / 2,
+                            view.height / 2,
+                            0,
+                            0
+                        )
                         val data: Article = articles[position]
-                        ContentActivity.start(context, data.id, data.title, data.link, options.toBundle())
+                        ContentActivity.start(
+                            context,
+                            data.id,
+                            data.title,
+                            data.link,
+                            options.toBundle()
+                        )
                         true
                     }
                     return tv

@@ -10,7 +10,8 @@ import com.cxz.wanandroid.mvp.model.WeChatModel
  * @date 2018/10/28
  * @desc
  */
-class WeChatPresenter : BasePresenter<WeChatContract.Model, WeChatContract.View>(), WeChatContract.Presenter {
+class WeChatPresenter : BasePresenter<WeChatContract.Model, WeChatContract.View>(),
+    WeChatContract.Presenter {
 
     override fun createModel(): WeChatContract.Model? = WeChatModel()
 

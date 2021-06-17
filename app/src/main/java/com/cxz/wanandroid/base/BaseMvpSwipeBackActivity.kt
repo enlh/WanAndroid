@@ -9,7 +9,8 @@ import com.cxz.swipelibrary.Utils
 /**
  * Created by chenxz on 2018/8/6.
  */
-abstract class BaseMvpSwipeBackActivity<in V : IView, P : IPresenter<V>> : BaseMvpActivity<V, P>(), SwipeBackActivityBase {
+abstract class BaseMvpSwipeBackActivity<in V : IView, P : IPresenter<V>> : BaseMvpActivity<V, P>(),
+    SwipeBackActivityBase {
 
     private lateinit var mHelper: SwipeBackActivityHelper
 

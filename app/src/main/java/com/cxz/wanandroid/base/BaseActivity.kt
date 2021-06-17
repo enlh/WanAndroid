@@ -165,11 +165,12 @@ abstract class BaseActivity : AppCompatActivity() {
         mTipView = layoutInflater.inflate(R.layout.layout_network_tip, null)
         mWindowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
         mLayoutParams = WindowManager.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_APPLICATION,
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                PixelFormat.TRANSLUCENT)
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            WindowManager.LayoutParams.TYPE_APPLICATION,
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            PixelFormat.TRANSLUCENT
+        )
         mLayoutParams.gravity = Gravity.TOP
         mLayoutParams.x = 0
         mLayoutParams.y = 0

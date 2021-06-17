@@ -10,15 +10,17 @@ import com.cxz.wanandroid.mvp.model.bean.KnowledgeTreeBody
 /**
  * Created by chenxz on 2018/5/9.
  */
-class KnowledgeTreeAdapter(private val context: Context?, datas: MutableList<KnowledgeTreeBody>) : BaseQuickAdapter<KnowledgeTreeBody, BaseViewHolder>(R.layout.item_knowledge_tree_list, datas) {
+class KnowledgeTreeAdapter(private val context: Context?, datas: MutableList<KnowledgeTreeBody>) :
+    BaseQuickAdapter<KnowledgeTreeBody, BaseViewHolder>(R.layout.item_knowledge_tree_list, datas) {
 
     override fun convert(helper: BaseViewHolder?, item: KnowledgeTreeBody?) {
         helper?.setText(R.id.title_first, item?.name)
         item?.children.let {
-            helper?.setText(R.id.title_second,
-                    it?.joinToString("    ", transform = { child ->
-                        Html.fromHtml(child.name)
-                    })
+            helper?.setText(
+                R.id.title_second,
+                it?.joinToString("    ", transform = { child ->
+                    Html.fromHtml(child.name)
+                })
             )
 
         }

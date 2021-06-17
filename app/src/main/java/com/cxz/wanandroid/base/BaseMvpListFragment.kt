@@ -48,6 +48,7 @@ abstract class BaseMvpListFragment<in V : IView, P : IPresenter<V>> : BaseMvpFra
         isRefresh = true
         onRefreshList()
     }
+
     /**
      * LoadMoreListener
      */

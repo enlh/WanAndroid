@@ -31,7 +31,8 @@ import kotlinx.android.synthetic.main.item_home_banner.view.*
 /**
  * Created by chenxz on 2018/4/22.
  */
-class HomeFragment : BaseMvpFragment<HomeContract.View, HomeContract.Presenter>(), HomeContract.View {
+class HomeFragment : BaseMvpFragment<HomeContract.View, HomeContract.Presenter>(),
+    HomeContract.View {
 
     companion object {
         fun getInstance(): HomeFragment = HomeFragment()
@@ -165,10 +166,10 @@ class HomeFragment : BaseMvpFragment<HomeContract.View, HomeContract.Presenter>(
         val bannerFeedList = ArrayList<String>()
         val bannerTitleList = ArrayList<String>()
         Observable.fromIterable(banners)
-                .subscribe { list ->
-                    bannerFeedList.add(list.imagePath)
-                    bannerTitleList.add(list.title)
-                }
+            .subscribe { list ->
+                bannerFeedList.add(list.imagePath)
+                bannerTitleList.add(list.title)
+            }
         bannerView?.banner?.run {
             setAutoPlayAble(bannerFeedList.size > 1)
             setData(bannerFeedList, bannerTitleList)
@@ -243,44 +244,45 @@ class HomeFragment : BaseMvpFragment<HomeContract.View, HomeContract.Presenter>(
     /**
      * BannerClickListener
      */
-    private val bannerDelegate = BGABanner.Delegate<ImageView, String> { banner, imageView, model, position ->
-        if (bannerDatas.size > 0) {
-            val data = bannerDatas[position]
-            ContentActivity.start(activity, data.id, data.title, data.url)
+    private val bannerDelegate =
+        BGABanner.Delegate<ImageView, String> { banner, imageView, model, position ->
+            if (bannerDatas.size > 0) {
+                val data = bannerDatas[position]
+                ContentActivity.start(activity, data.id, data.title, data.url)
+            }
         }
-    }
 
     /**
      * ItemChildClickListener
      */
     private val onItemChildClickListener =
-            BaseQuickAdapter.OnItemChildClickListener { _, view, position ->
-                if (datas.size != 0) {
-                    val data = datas[position]
-                    when (view.id) {
-                        R.id.iv_like -> {
-                            if (isLogin) {
-                                if (!NetWorkUtil.isNetworkAvailable(App.context)) {
-                                    showSnackMsg(resources.getString(R.string.no_network))
-                                    return@OnItemChildClickListener
-                                }
-                                val collect = data.collect
-                                data.collect = !collect
-                                homeAdapter.setData(position, data)
-                                if (collect) {
-                                    mPresenter?.cancelCollectArticle(data.id)
-                                } else {
-                                    mPresenter?.addCollectArticle(data.id)
-                                }
-                            } else {
-                                Intent(activity, LoginActivity::class.java).run {
-                                    startActivity(this)
-                                }
-                                showToast(resources.getString(R.string.login_tint))
+        BaseQuickAdapter.OnItemChildClickListener { _, view, position ->
+            if (datas.size != 0) {
+                val data = datas[position]
+                when (view.id) {
+                    R.id.iv_like -> {
+                        if (isLogin) {
+                            if (!NetWorkUtil.isNetworkAvailable(App.context)) {
+                                showSnackMsg(resources.getString(R.string.no_network))
+                                return@OnItemChildClickListener
                             }
+                            val collect = data.collect
+                            data.collect = !collect
+                            homeAdapter.setData(position, data)
+                            if (collect) {
+                                mPresenter?.cancelCollectArticle(data.id)
+                            } else {
+                                mPresenter?.addCollectArticle(data.id)
+                            }
+                        } else {
+                            Intent(activity, LoginActivity::class.java).run {
+                                startActivity(this)
+                            }
+                            showToast(resources.getString(R.string.login_tint))
                         }
                     }
                 }
             }
+        }
 
 }

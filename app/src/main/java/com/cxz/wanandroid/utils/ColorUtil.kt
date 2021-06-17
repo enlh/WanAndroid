@@ -45,7 +45,11 @@ object ColorUtil {
      * @param fraction  变量
      * @return 当前颜色
      */
-    fun changingColor(@ColorInt colorFrom: Int, @ColorInt colorTo: Int, @FloatRange(from = 0.0, to = 1.0) fraction: Float): Int {
+    fun changingColor(
+        @ColorInt colorFrom: Int,
+        @ColorInt colorTo: Int,
+        @FloatRange(from = 0.0, to = 1.0) fraction: Float
+    ): Int {
         val redStart = Color.red(colorFrom)
         val blueStart = Color.blue(colorFrom)
         val greenStart = Color.green(colorFrom)

@@ -22,11 +22,19 @@ object CommonUtil {
     }
 
     fun dp2px(context: Context, dpValue: Float): Int {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, context.resources.displayMetrics).toInt()
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            dpValue,
+            context.resources.displayMetrics
+        ).toInt()
     }
 
     fun sp2px(context: Context, spValue: Float): Int {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, spValue, context.resources.displayMetrics).toInt()
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_SP,
+            spValue,
+            context.resources.displayMetrics
+        ).toInt()
     }
 
     /**

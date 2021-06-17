@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="?android:attr/listPreferredItemHeight"
@@ -12,7 +11,7 @@
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:padding="6dp"
-        tools:ignore="ContentDescription"/>
+        tools:ignore="ContentDescription" />
 
     <CheckedTextView
         android:id="@+id/label"
@@ -29,6 +28,6 @@
         android:minHeight="?android:attr/listPreferredItemHeight"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="?android:attr/textColorAlertDialogListItem"
-        android:textIsSelectable="false"/>
+        android:textIsSelectable="false" />
 
 </RelativeLayout>

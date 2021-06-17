@@ -21,15 +21,15 @@ class ExceptionHandle {
         fun handleException(e: Throwable): String {
             e.printStackTrace()
             if (e is SocketTimeoutException
-                    || e is ConnectException
-                    || e is HttpException
+                || e is ConnectException
+                || e is HttpException
             ) { //均视为网络错误
                 Logger.e(TAG, "网络连接异常: " + e.message)
                 errorMsg = "网络连接异常"
                 errorCode = ErrorStatus.NETWORK_ERROR
             } else if (e is JsonParseException
-                    || e is JSONException
-                    || e is ParseException
+                || e is JSONException
+                || e is ParseException
             ) {   //均视为解析错误
                 Logger.e(TAG, "数据解析异常: " + e.message)
                 errorMsg = "数据解析异常"

@@ -27,7 +27,7 @@ class SettingActivity : BaseSwipeBackActivity(), ColorChooserDialog.ColorCallbac
         val initFragment: String = intent.getStringExtra(EXTRA_SHOW_FRAGMENT) ?: ""
         val initArguments: Bundle = intent.getBundleExtra(EXTRA_SHOW_FRAGMENT_ARGUMENTS) ?: Bundle()
         val initTitle: String = intent.getStringExtra(EXTRA_SHOW_FRAGMENT_TITLE)
-                ?: resources.getString(R.string.setting)
+            ?: resources.getString(R.string.setting)
 
         if (initFragment.isEmpty()) {
             setupFragment(SettingFragment::class.java.name, initArguments)
@@ -53,7 +53,11 @@ class SettingActivity : BaseSwipeBackActivity(), ColorChooserDialog.ColorCallbac
         transaction.commitAllowingStateLoss()
     }
 
-    private fun onBuildStartFragmentIntent(fragmentName: String, args: Bundle?, title: String?): Intent {
+    private fun onBuildStartFragmentIntent(
+        fragmentName: String,
+        args: Bundle?,
+        title: String?
+    ): Intent {
         val intent = Intent(Intent.ACTION_MAIN)
         intent.setClass(this, javaClass)
         intent.putExtra(EXTRA_SHOW_FRAGMENT, fragmentName)
@@ -62,8 +66,10 @@ class SettingActivity : BaseSwipeBackActivity(), ColorChooserDialog.ColorCallbac
         return intent
     }
 
-    fun startWithFragment(fragmentName: String, args: Bundle?,
-                          resultTo: Fragment?, resultRequestCode: Int, title: String?) {
+    fun startWithFragment(
+        fragmentName: String, args: Bundle?,
+        resultTo: Fragment?, resultRequestCode: Int, title: String?
+    ) {
         val intent = onBuildStartFragmentIntent(fragmentName, args, title)
         if (resultTo == null) {
             startActivity(intent)

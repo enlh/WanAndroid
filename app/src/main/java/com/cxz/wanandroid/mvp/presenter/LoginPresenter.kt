@@ -8,7 +8,8 @@ import com.cxz.wanandroid.mvp.model.LoginModel
 /**
  * Created by chenxz on 2018/5/27.
  */
-class LoginPresenter : BasePresenter<LoginContract.Model, LoginContract.View>(), LoginContract.Presenter {
+class LoginPresenter : BasePresenter<LoginContract.Model, LoginContract.View>(),
+    LoginContract.Presenter {
 
     override fun createModel(): LoginContract.Model? = LoginModel()
 

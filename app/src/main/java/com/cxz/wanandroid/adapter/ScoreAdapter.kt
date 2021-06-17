@@ -15,7 +15,7 @@ class ScoreAdapter : BaseQuickAdapter<UserScoreBean, BaseViewHolder>(R.layout.it
         helper ?: return
         item ?: return
         helper.setText(R.id.tv_reason, item.reason)
-                .setText(R.id.tv_desc, item.desc)
-                .setText(R.id.tv_score, "+${item.coinCount}")
+            .setText(R.id.tv_desc, item.desc)
+            .setText(R.id.tv_score, "+${item.coinCount}")
     }
 }

@@ -19,7 +19,8 @@ import org.jetbrains.anko.uiThread
 /**
  * Created by chenxz on 2018/5/15.
  */
-class ProjectFragment : BaseMvpFragment<ProjectContract.View, ProjectContract.Presenter>(), ProjectContract.View {
+class ProjectFragment : BaseMvpFragment<ProjectContract.View, ProjectContract.Presenter>(),
+    ProjectContract.View {
 
     companion object {
         fun getInstance(): ProjectFragment = ProjectFragment()
@@ -131,7 +132,8 @@ class ProjectFragment : BaseMvpFragment<ProjectContract.View, ProjectContract.Pr
         if (viewPagerAdapter.count == 0) {
             return
         }
-        val fragment: ProjectListFragment = viewPagerAdapter.getItem(viewPager.currentItem) as ProjectListFragment
+        val fragment: ProjectListFragment =
+            viewPagerAdapter.getItem(viewPager.currentItem) as ProjectListFragment
         fragment.scrollToTop()
     }
 

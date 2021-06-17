@@ -9,7 +9,8 @@ import com.cxz.wanandroid.mvp.model.SquareModel
  * @date 2019/11/16
  * @desc
  */
-class SquarePresenter : CommonPresenter<SquareModel, SquareContract.View>(), SquareContract.Presenter {
+class SquarePresenter : CommonPresenter<SquareModel, SquareContract.View>(),
+    SquareContract.Presenter {
 
     override fun createModel(): SquareModel? = SquareModel()
 

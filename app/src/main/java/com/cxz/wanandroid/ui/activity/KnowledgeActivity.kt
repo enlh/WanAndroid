@@ -121,7 +121,8 @@ class KnowledgeActivity : BaseSwipeBackActivity() {
         if (viewPagerAdapter.count == 0) {
             return@OnClickListener
         }
-        val fragment: KnowledgeFragment = viewPagerAdapter.getItem(viewPager.currentItem) as KnowledgeFragment
+        val fragment: KnowledgeFragment =
+            viewPagerAdapter.getItem(viewPager.currentItem) as KnowledgeFragment
         fragment.scrollToTop()
     }
 
@@ -135,13 +136,15 @@ class KnowledgeActivity : BaseSwipeBackActivity() {
             R.id.action_share -> {
                 Intent().run {
                     action = Intent.ACTION_SEND
-                    putExtra(Intent.EXTRA_TEXT,
-                            getString(
-                                    R.string.share_article_url,
-                                    getString(R.string.app_name),
-                                    knowledges[tabLayout.selectedTabPosition].name,
-                                    knowledges[tabLayout.selectedTabPosition].id.toString()
-                            ))
+                    putExtra(
+                        Intent.EXTRA_TEXT,
+                        getString(
+                            R.string.share_article_url,
+                            getString(R.string.app_name),
+                            knowledges[tabLayout.selectedTabPosition].name,
+                            knowledges[tabLayout.selectedTabPosition].id.toString()
+                        )
+                    )
                     type = Constant.CONTENT_SHARE_TYPE
                     startActivity(Intent.createChooser(this, getString(R.string.action_share)))
                 }

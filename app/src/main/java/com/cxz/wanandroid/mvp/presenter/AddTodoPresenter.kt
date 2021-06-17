@@ -8,7 +8,8 @@ import com.cxz.wanandroid.mvp.model.AddTodoModel
 /**
  * Created by chenxz on 2018/8/11.
  */
-class AddTodoPresenter : BasePresenter<AddTodoContract.Model, AddTodoContract.View>(), AddTodoContract.Presenter {
+class AddTodoPresenter : BasePresenter<AddTodoContract.Model, AddTodoContract.View>(),
+    AddTodoContract.Presenter {
 
     override fun createModel(): AddTodoContract.Model? = AddTodoModel()
 

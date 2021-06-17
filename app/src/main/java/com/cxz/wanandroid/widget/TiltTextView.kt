@@ -39,7 +39,11 @@ class TiltTextView : View {
 
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, -1)
 
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
         val array = context.obtainStyledAttributes(attrs, R.styleable.TiltTextView)
         mTiltBgColor = array.getColor(R.styleable.TiltTextView_tiltBgColor, mTiltBgColor)
         mTextSize = array.getDimension(R.styleable.TiltTextView_tiltTextSize, mTextSize)

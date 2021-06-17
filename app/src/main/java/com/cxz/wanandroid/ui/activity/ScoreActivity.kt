@@ -22,7 +22,8 @@ import kotlinx.android.synthetic.main.activity_score.*
 /**
  * 我的积分页面
  */
-class ScoreActivity : BaseMvpSwipeBackActivity<ScoreContract.View, ScoreContract.Presenter>(), ScoreContract.View {
+class ScoreActivity : BaseMvpSwipeBackActivity<ScoreContract.View, ScoreContract.Presenter>(),
+    ScoreContract.View {
 
     /**
      * 每页展示的个数
@@ -153,6 +154,7 @@ class ScoreActivity : BaseMvpSwipeBackActivity<ScoreContract.View, ScoreContract
         scoreAdapter.setEnableLoadMore(false)
         mPresenter?.getUserScoreList(1)
     }
+
     /**
      * LoadMoreListener
      */

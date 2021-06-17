@@ -45,7 +45,10 @@ interface ApiService {
      * @param cid
      */
     @GET("article/list/{page}/json")
-    fun getKnowledgeList(@Path("page") page: Int, @Query("cid") cid: Int): Observable<HttpResult<ArticleResponseBody>>
+    fun getKnowledgeList(
+        @Path("page") page: Int,
+        @Query("cid") cid: Int
+    ): Observable<HttpResult<ArticleResponseBody>>
 
     /**
      * 导航数据
@@ -68,7 +71,10 @@ interface ApiService {
      * @param cid
      */
     @GET("project/list/{page}/json")
-    fun getProjectList(@Path("page") page: Int, @Query("cid") cid: Int): Observable<HttpResult<ArticleResponseBody>>
+    fun getProjectList(
+        @Path("page") page: Int,
+        @Query("cid") cid: Int
+    ): Observable<HttpResult<ArticleResponseBody>>
 
     /**
      * 登录
@@ -78,8 +84,10 @@ interface ApiService {
      */
     @POST("user/login")
     @FormUrlEncoded
-    fun loginWanAndroid(@Field("username") username: String,
-                        @Field("password") password: String): Observable<HttpResult<LoginData>>
+    fun loginWanAndroid(
+        @Field("username") username: String,
+        @Field("password") password: String
+    ): Observable<HttpResult<LoginData>>
 
     /**
      * 注册
@@ -90,9 +98,11 @@ interface ApiService {
      */
     @POST("user/register")
     @FormUrlEncoded
-    fun registerWanAndroid(@Field("username") username: String,
-                           @Field("password") password: String,
-                           @Field("repassword") repassword: String): Observable<HttpResult<LoginData>>
+    fun registerWanAndroid(
+        @Field("username") username: String,
+        @Field("password") password: String,
+        @Field("repassword") repassword: String
+    ): Observable<HttpResult<LoginData>>
 
     /**
      * 退出登录
@@ -126,9 +136,11 @@ interface ApiService {
      */
     @POST("lg/collect/add/json")
     @FormUrlEncoded
-    fun addCoolectOutsideArticle(@Field("title") title: String,
-                                 @Field("author") author: String,
-                                 @Field("link") link: String): Observable<HttpResult<Any>>
+    fun addCoolectOutsideArticle(
+        @Field("title") title: String,
+        @Field("author") author: String,
+        @Field("link") link: String
+    ): Observable<HttpResult<Any>>
 
     /**
      * 文章列表中取消收藏文章
@@ -146,8 +158,10 @@ interface ApiService {
      */
     @POST("lg/uncollect/{id}/json")
     @FormUrlEncoded
-    fun removeCollectArticle(@Path("id") id: Int,
-                             @Field("originId") originId: Int = -1): Observable<HttpResult<Any>>
+    fun removeCollectArticle(
+        @Path("id") id: Int,
+        @Field("originId") originId: Int = -1
+    ): Observable<HttpResult<Any>>
 
     /**
      * 搜索热词
@@ -164,8 +178,10 @@ interface ApiService {
      */
     @POST("article/query/{page}/json")
     @FormUrlEncoded
-    fun queryBySearchKey(@Path("page") page: Int,
-                         @Field("k") key: String): Observable<HttpResult<ArticleResponseBody>>
+    fun queryBySearchKey(
+        @Path("page") page: Int,
+        @Field("k") key: String
+    ): Observable<HttpResult<ArticleResponseBody>>
 
     /**
      * 获取TODO列表数据
@@ -182,7 +198,10 @@ interface ApiService {
      * @param page 拼接在链接上，从1开始
      */
     @POST("/lg/todo/listnotdo/{type}/json/{page}")
-    fun getNoTodoList(@Path("page") page: Int, @Path("type") type: Int): Observable<HttpResult<TodoResponseBody>>
+    fun getNoTodoList(
+        @Path("page") page: Int,
+        @Path("type") type: Int
+    ): Observable<HttpResult<TodoResponseBody>>
 
     /**
      * 获取已完成Todo列表
@@ -191,7 +210,10 @@ interface ApiService {
      * @param page 拼接在链接上，从1开始
      */
     @POST("/lg/todo/listdone/{type}/json/{page}")
-    fun getDoneList(@Path("page") page: Int, @Path("type") type: Int): Observable<HttpResult<TodoResponseBody>>
+    fun getDoneList(
+        @Path("page") page: Int,
+        @Path("type") type: Int
+    ): Observable<HttpResult<TodoResponseBody>>
 
     /**
      * V2版本 ： 获取TODO列表数据
@@ -204,7 +226,10 @@ interface ApiService {
      *          orderby 1:完成日期顺序；2.完成日期逆序；3.创建日期顺序；4.创建日期逆序(默认)；
      */
     @GET("/lg/todo/v2/list/{page}/json")
-    fun getTodoList(@Path("page") page: Int, @QueryMap map: MutableMap<String, Any>): Observable<HttpResult<AllTodoResponseBody>>
+    fun getTodoList(
+        @Path("page") page: Int,
+        @QueryMap map: MutableMap<String, Any>
+    ): Observable<HttpResult<AllTodoResponseBody>>
 
     /**
      * 仅更新完成状态Todo
@@ -214,7 +239,10 @@ interface ApiService {
      */
     @POST("/lg/todo/done/{id}/json")
     @FormUrlEncoded
-    fun updateTodoById(@Path("id") id: Int, @Field("status") status: Int): Observable<HttpResult<Any>>
+    fun updateTodoById(
+        @Path("id") id: Int,
+        @Field("status") status: Int
+    ): Observable<HttpResult<Any>>
 
     /**
      * 删除一条Todo
@@ -249,7 +277,10 @@ interface ApiService {
      */
     @POST("/lg/todo/update/{id}/json")
     @FormUrlEncoded
-    fun updateTodo(@Path("id") id: Int, @FieldMap map: MutableMap<String, Any>): Observable<HttpResult<Any>>
+    fun updateTodo(
+        @Path("id") id: Int,
+        @FieldMap map: MutableMap<String, Any>
+    ): Observable<HttpResult<Any>>
 
     /**
      * 获取公众号列表
@@ -265,8 +296,10 @@ interface ApiService {
      * @param page 公众号页码
      */
     @GET("/wxarticle/list/{id}/{page}/json")
-    fun getWXArticles(@Path("id") id: Int,
-                      @Path("page") page: Int): Observable<HttpResult<ArticleResponseBody>>
+    fun getWXArticles(
+        @Path("id") id: Int,
+        @Path("page") page: Int
+    ): Observable<HttpResult<ArticleResponseBody>>
 
     /**
      * 在某个公众号中搜索历史文章
@@ -276,9 +309,11 @@ interface ApiService {
      * @param page 公众号页码
      */
     @GET("/wxarticle/list/{id}/{page}/json")
-    fun queryWXArticles(@Path("id") id: Int,
-                        @Query("k") key: String,
-                        @Path("page") page: Int): Observable<HttpResult<ArticleResponseBody>>
+    fun queryWXArticles(
+        @Path("id") id: Int,
+        @Query("k") key: String,
+        @Path("page") page: Int
+    ): Observable<HttpResult<ArticleResponseBody>>
 
     /**
      * 获取个人积分，需要登录后访问

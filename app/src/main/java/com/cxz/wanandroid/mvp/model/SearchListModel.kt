@@ -8,7 +8,10 @@ import io.reactivex.Observable
 
 class SearchListModel : CommonModel(), SearchListContract.Model {
 
-    override fun queryBySearchKey(page: Int, key: String): Observable<HttpResult<ArticleResponseBody>> {
+    override fun queryBySearchKey(
+        page: Int,
+        key: String
+    ): Observable<HttpResult<ArticleResponseBody>> {
         return RetrofitHelper.service.queryBySearchKey(page, key)
     }
 

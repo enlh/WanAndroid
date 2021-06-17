@@ -9,7 +9,6 @@ import android.view.*
 import android.widget.PopupWindow
 import com.cxz.wanandroid.R
 import com.cxz.wanandroid.adapter.TodoPopupAdapter
-import com.cxz.wanandroid.app.App
 import com.cxz.wanandroid.base.BaseSwipeBackActivity
 import com.cxz.wanandroid.constant.Constant
 import com.cxz.wanandroid.event.ColorEvent
@@ -31,6 +30,7 @@ class TodoActivity : BaseSwipeBackActivity() {
     private var mTodoFragment: TodoFragment? = null
 
     private lateinit var datas: MutableList<TodoTypeBean>
+
     /**
      * PopupWindow
      */
@@ -139,7 +139,12 @@ class TodoActivity : BaseSwipeBackActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             mSwitchPopupWindow?.showAsDropDown(toolbar, -DisplayManager.dip2px(5F), 0, Gravity.END)
         } else {
-            mSwitchPopupWindow?.showAtLocation(toolbar, Gravity.BOTTOM, -DisplayManager.dip2px(5F), 0)
+            mSwitchPopupWindow?.showAtLocation(
+                toolbar,
+                Gravity.BOTTOM,
+                -DisplayManager.dip2px(5F),
+                0
+            )
         }
     }
 
@@ -175,20 +180,20 @@ class TodoActivity : BaseSwipeBackActivity() {
      * NavigationItemSelect监听
      */
     private val onNavigationItemSelectedListener =
-            BottomNavigationView.OnNavigationItemSelectedListener { item ->
-                return@OnNavigationItemSelectedListener when (item.itemId) {
-                    R.id.action_notodo -> {
-                        EventBus.getDefault().post(TodoEvent(Constant.TODO_NO, mType))
-                        true
-                    }
-                    R.id.action_completed -> {
-                        EventBus.getDefault().post(TodoEvent(Constant.TODO_DONE, mType))
-                        true
-                    }
-                    else -> {
-                        false
-                    }
+        BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            return@OnNavigationItemSelectedListener when (item.itemId) {
+                R.id.action_notodo -> {
+                    EventBus.getDefault().post(TodoEvent(Constant.TODO_NO, mType))
+                    true
+                }
+                R.id.action_completed -> {
+                    EventBus.getDefault().post(TodoEvent(Constant.TODO_DONE, mType))
+                    true
+                }
+                else -> {
+                    false
                 }
             }
+        }
 
 }
